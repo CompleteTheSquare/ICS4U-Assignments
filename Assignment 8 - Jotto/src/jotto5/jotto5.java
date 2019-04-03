@@ -12,7 +12,6 @@ import java.util.Set;
 
 /**
  *
- * @author Sterling
  */
 public class jotto5 extends javax.swing.JFrame {
 
