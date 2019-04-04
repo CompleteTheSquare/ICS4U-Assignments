@@ -26,7 +26,7 @@ public class WordSearch {
      */
     //read in entire file first
     //store each word in an array
-    //do the binary thing
+    //do the binary thing - use method 1, the iterative approach
     public static boolean isCommonWord(String word) throws IOException {
 
         String[] array = new String[5000];
@@ -35,7 +35,7 @@ public class WordSearch {
 
             //import file
             Scanner scanner = new Scanner(new File("key.txt"));
-
+//stores all the words in the file into array
             while (scanner.hasNextLine()) {
                 for (int i = 0; i < 5000; i++) {
                     array[i] = scanner.nextLine();
@@ -44,6 +44,11 @@ public class WordSearch {
 
             }
             System.out.println(Arrays.toString(array));
+            int low = 0, up = array.length - 1;
+            while (true) {
+                System.out.println("cats");
+
+            }
 
         } catch (IOException exception) {
             System.out.println("something broke in the isCommonWord method");
