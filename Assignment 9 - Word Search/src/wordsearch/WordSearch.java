@@ -43,13 +43,26 @@ public class WordSearch {
                 }
 
             }
-            System.out.println(Arrays.toString(array));
-            int low = 0, up = array.length - 1;
+            //System.out.println(Arrays.toString(array));
+            int low = 0, high = array.length - 1;
             while (true) {
-                System.out.println("cats");
+                int midpoint = (low + high) / 2;
 
+                if (low == high && array[midpoint] != word) {
+                    System.out.println("cats");
+                    return false;
+                }
+
+                if ((word.compareTo(array[midpoint]) > 0)) {
+
+                    high = midpoint - 1;
+
+                } else if (word.compareTo(array[midpoint]) > 0) {
+                    low = midpoint + 1;
+                } else {
+                    return true;
+                }
             }
-
         } catch (IOException exception) {
             System.out.println("something broke in the isCommonWord method");
         }
@@ -62,7 +75,7 @@ public class WordSearch {
      */
     public static void main(String[] args) {
         try {
-            isCommonWord("cat");
+            System.out.println(isCommonWord("cat"));
         } catch (IOException exception) {
             System.out.println("something broke in the main method");
         }
