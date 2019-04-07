@@ -12,7 +12,6 @@ import java.util.*;
 
 /**
  *
- * @author Sterling
  */
 public class WordSearch {
 
@@ -24,9 +23,11 @@ public class WordSearch {
      * @return true if word is in 5000Words.txt; false otherwise
      * @throws java.io.IOException when the file 5000Words.txt is missing
      */
-    //read in entire file first
-    //store each word in an array
-    //do the binary thing - use method 1, the iterative approach
+    
+    
+    //creates an array and read in entire file first
+    //store each word in an array (not arraylist)
+    //then do binary search with the array
     public static boolean isCommonWord(String word) throws IOException {
 
         String[] array = new String[5000];
@@ -39,22 +40,22 @@ public class WordSearch {
             while (scanner.hasNextLine()) {
                 for (int i = 0; i < 5000; i++) {
                     array[i] = scanner.nextLine();
-                    System.out.println("from array, element: " + i + " value: " + array[i]);
                 }
 
             }
-            //System.out.println(Arrays.toString(array));
-            int low = 0, high = array.length - 1;
+            //System.out.println(Arrays.toString(array)); 
+            //if the code breaks, uncomment this line and see if it runs
+            //if the code still doesn't work, pull from github 
+            
+            int low = 0, high = array.length - 1;//upper and lower ranges of sort
             while (true) {
                 int midpoint = (low + high) / 2;
 
                 if (low == high && array[midpoint] != word) {
-                    System.out.println("cats");
                     return false;
                 }
 
                 if ((word.compareTo(array[midpoint]) > 0)) {
-
                     high = midpoint - 1;
 
                 } else if (word.compareTo(array[midpoint]) > 0) {
@@ -75,7 +76,8 @@ public class WordSearch {
      */
     public static void main(String[] args) {
         try {
-            System.out.println(isCommonWord("cat"));
+            String word = "kitten"; //insert word here
+            System.out.println("The word " + word+ " is a common word: " +isCommonWord(word));
         } catch (IOException exception) {
             System.out.println("something broke in the main method");
         }
@@ -83,8 +85,3 @@ public class WordSearch {
     }
 
 }
-
-
-/*
-            
- */
