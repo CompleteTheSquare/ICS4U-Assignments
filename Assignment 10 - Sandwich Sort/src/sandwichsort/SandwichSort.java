@@ -9,7 +9,6 @@ import java.util.Arrays;
 
 /**
  *
- * @author Sterling
  */
 public class SandwichSort {
 
@@ -34,7 +33,9 @@ public class SandwichSort {
                 positionHolder = a;
             }
         }
-        System.out.println(highest + "    " + positionHolder);
+        swap(intArray, (intArray.length - 1) - adjustment, positionHolder);
+        System.out.println("highest: " + highest + "      At position:  " + positionHolder);
+        System.out.println("Array:" + Arrays.toString(intArray));
 
         //gets lowest integer between the ranges
         for (int z = (intArray.length - 1) - adjustment; z > 0; z--) {
@@ -43,54 +44,52 @@ public class SandwichSort {
                 positionHolder = z;
             }
         }
-            System.out.println(lowest+ "    " + positionHolder); 
-            
-            
-            
-        
-        
-        
-        
-        /*          
-        int adjustment = 0; //holds adjustment for array endings during iterations
-        int highest = intArray[0];
-        int lowest = intArray[0];
-        int numberOfElements = intArray.length - 1;
-        int holder, positionHolder=0;
-
-//find highest value in array
-        for (int i = 0 + adjustment; i < intArray.length; i++) {
-
-            if (intArray[i] > highest) {
-                highest = intArray[i];
-                positionHolder = i;
-            }
-            
-            
-            
-            //place the highest integer in the correct spot
-        holder = intArray[0 + adjustment];
-        intArray[0 + adjustment] = highest;
-        intArray[i] = positionHolder;
-                System.out.println("Highest is: " + highest);
-                        System.out.println("New Array: " + Arrays.toString(intArray));
-        }
-/*
-//find lowest value in array
-        for (int n = (numberOfElements - adjustment); n >= 0; n--) {
-            if (intArray[n] < lowest) {
-                lowest = intArray[n];
-                positionHolder = n;
-            }
-        }
-        System.out.println("Lowest is: " + lowest);
-
-         */
+        swap(intArray, adjustment, positionHolder);
+        System.out.println("lowest: " + lowest + "       At Position:  " + positionHolder);
+        System.out.println("Array:" + Arrays.toString(intArray));
     }
 
-    
-    
-    
+    /**
+     * This method the values at 2 positions given their positions
+     *
+     * @param displacingPosition the position of the high integer
+     * @param displacedPosition the value being displaced by the higher integer
+     *
+     * @param intArray the user's integer array
+     */
+    public static void swap(int[] intArray, int displacingPosition, int displacedPosition) {
+        int holder = intArray[displacedPosition];
+
+        intArray[displacedPosition] = intArray[displacingPosition];
+        intArray[displacingPosition] = holder;
+
+    }
+
+    /**
+     * This method checks if
+     *
+     *
+     *
+     * @param intArray the user's integer array
+     */
+    public static boolean checkIfSorted(int[] intArray) {
+        int previous = intArray[0], holding;
+        for (int i = 0; i <= intArray.length; i++) {
+            holding = intArray[i];
+            if (previous > holding) {
+                return false;
+            } else {
+                return true;
+            }
+
+        }
+
+    }
+
+    /**
+     * IGNORE THIS ERROR - it works but net beans just puts an error
+     */
+
     /**
      * @param args the command line arguments
      */
