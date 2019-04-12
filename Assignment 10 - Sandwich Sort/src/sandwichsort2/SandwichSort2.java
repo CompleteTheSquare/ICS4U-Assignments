@@ -26,8 +26,8 @@ public class SandwichSort2 {
      */
     public static int[] checkIfSorted(int[] intArray) {
         boolean state = true;
-        
-        int[] sortedArray= intArray;
+
+        int[] sortedArray = intArray;
 
         for (int index = 0; index <= intArray.length - 2;
                 index++) {
@@ -46,42 +46,46 @@ public class SandwichSort2 {
     }
 
     public static void sandwichSort(int[] intArray) {
-        
-        int positionHolder = 0; // position finder
-        int adjustment = 0;
-        int highest = intArray[0];
-        int lowest = intArray[0];
-        
-         for (int a = 0 + adjustment; a < intArray.length; a++) {
+        int highest = intArray[0], lowest = intArray[0]; //keeps highest and lowest value, default first number in array
+        int highestPosition = 0, lowestPosition = 0;
 
+//find the highest value in the element
+        for (int a = 0; a <= intArray.length - 1; a++) {
             if (intArray[a] > highest) {
                 highest = intArray[a];
-                positionHolder = a;
+                highestPosition = a;
             }
         }
-        //swap(intArray, (intArray.length - 1) - adjustment, positionHolder);
-        System.out.println("highest: " + highest + "      At position:  " + positionHolder);
-        System.out.println("Array:" + Arrays.toString(intArray));
+        System.out.println("Highest value in array: " + highest + "   Index:  " + highestPosition);
 
-        //gets lowest integer between the ranges
-        for (int z = (intArray.length - 1) - adjustment; z > 0; z--) {
-            if (intArray[z] < lowest) {
+        //find the lowest value in the element
+        for (int z = 0; z <= intArray.length - 1; z++) {
+            if (intArray[z] < highest) {
                 lowest = intArray[z];
-                positionHolder = z;
+                lowestPosition = z;
             }
         }
-        //swap(intArray, adjustment, positionHolder);
-        System.out.println("lowest: " + lowest + "       At Position:  " + positionHolder);
-        System.out.println("Array:" + Arrays.toString(intArray));
+        System.out.println("Lowest value in array: " + lowest + "   Index:  " + lowestPosition);
         
+        
+    }
+
+    public static void swap(int[] intArray, int displacingPosition, int displacedPosition) {
+        int holder = intArray[displacedPosition];
+
+        intArray[displacedPosition] = intArray[displacingPosition];
+        intArray[displacingPosition] = holder;
     }
 
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        int[] userArray = {3, 5, 6, 1, 4, 2};
-        System.out.println(Arrays.toString(checkIfSorted(userArray)));
+        int[] intArray = {3, 5, 6, 1, 4, 2};
+
+        System.out.println("Original Array: " + Arrays.toString(intArray));
+        System.out.println(Arrays.toString(checkIfSorted(intArray)));
+        System.out.println("end");
     }
 
 }
