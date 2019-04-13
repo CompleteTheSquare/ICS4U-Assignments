@@ -14,36 +14,109 @@ public class SandwichSort4 {
 
     public static void sandwichSort(int[] intArray) {
 
+        int indexOfHighest = 0, indexOfLowest = 0;
         int highest = intArray[intArray.length / 2];
         int lowest = intArray[intArray.length / 2];
 
-        int indexOfHighest = 0, indexOfLowest = 0;
-
+        System.out.println("Original Array: " + Arrays.toString(intArray));
+        System.out.println ("--------------------------------");
+        //getHighest1
         for (int index = lowAdjustment; index <= intArray.length - highAdjustment; index++) {
+
             if (intArray[index] >= highest) {
                 highest = intArray[index];
                 indexOfHighest = index;
             }
         }
+        System.out.println("\n");
+        System.out.println("Index of highest : " + indexOfHighest);
+        System.out.println("Value of highest: " + highest);
+        swap(intArray, indexOfHighest, intArray.length - highAdjustment);
+        System.out.println(Arrays.toString(intArray));
 
+        //getLowest1
         for (int index = lowAdjustment; index <= intArray.length - highAdjustment; index++) {
             if (intArray[index] <= lowest) {
                 lowest = intArray[index];
                 indexOfLowest = index;
             }
         }
-        System.out.println("Index of highest : " + indexOfHighest);
-        System.out.println("Value of highest: " + highest);
-
+        System.out.println("\n");
         System.out.println("Index of lowest : " + indexOfLowest);
         System.out.println("Value of lowest: " + lowest);
+        swap(intArray, indexOfLowest, lowAdjustment);
+        System.out.println(Arrays.toString(intArray));
+                System.out.println ("--------------------------------");
 
+        lowAdjustment++;
+        highAdjustment++;
+
+        indexOfHighest = 0;
+        indexOfLowest = 0;
+        highest = intArray[intArray.length / 2];
+        lowest = intArray[intArray.length / 2];
+                //getHighest2
+        for (int index = lowAdjustment; index <= intArray.length - highAdjustment; index++) {
+
+            if (intArray[index] >= highest) {
+                highest = intArray[index];
+                indexOfHighest = index;
+            }
+        }
+        System.out.println("\n");
+        System.out.println("Index of highest : " + indexOfHighest);
+        System.out.println("Value of highest: " + highest);
+        swap(intArray, indexOfHighest, intArray.length - highAdjustment);
         System.out.println(Arrays.toString(intArray));
 
-  swap (intArray, indexOfLowest, lowAdjustment);      
+        //getLowest2
+        for (int index = lowAdjustment; index <= intArray.length - highAdjustment; index++) {
+            if (intArray[index] <= lowest) {
+                lowest = intArray[index];
+                indexOfLowest = index;
+            }
+        }
+        System.out.println("\n");
+        System.out.println("Index of lowest : " + indexOfLowest);
+        System.out.println("Value of lowest: " + lowest);
+        swap(intArray, indexOfLowest, lowAdjustment);
+        System.out.println(Arrays.toString(intArray));
+        System.out.println ("--------------------------------");
         
-swap (intArray, indexOfHighest, intArray.length-highAdjustment);
-System.out.println (Arrays.toString(intArray));
+        lowAdjustment++;
+        highAdjustment++;
+        indexOfHighest = 0;
+        indexOfLowest = 0;
+        highest = intArray[intArray.length / 2];
+        lowest = intArray[intArray.length / 2];
+        //getHighest3
+        for (int index = lowAdjustment; index <= intArray.length - highAdjustment; index++) {
+System.out.println ("INDEX: "+ index);
+            if (intArray[index] >= highest) {
+                highest = intArray[index];
+                indexOfHighest = index;
+            }
+        }
+        System.out.println("\n");
+        System.out.println("Index of highest : " + indexOfHighest);
+        System.out.println("Value of highest: " + highest);
+        swap(intArray, indexOfHighest, intArray.length - highAdjustment);
+        System.out.println(Arrays.toString(intArray));
+
+        //getLowest3
+        for (int index = lowAdjustment; index <= intArray.length - highAdjustment; index++) {
+            if (intArray[index] <= lowest) {
+                lowest = intArray[index];
+                indexOfLowest = index;
+            }
+        }
+        System.out.println("\n");
+        System.out.println("Index of lowest : " + indexOfLowest);
+        System.out.println("Value of lowest: " + lowest);
+        swap(intArray, indexOfLowest, lowAdjustment);
+        System.out.println(Arrays.toString(intArray));
+
+
     }
 
     public static void swap(int[] array, int displacingPosition, int displacedPosition) {
