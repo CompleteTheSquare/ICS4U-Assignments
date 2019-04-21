@@ -26,6 +26,10 @@ public class Minibattleship extends javax.swing.JFrame {
     public static int[][] questionArray, solutionArray = {solutionRow0, solutionRow1, solutionRow2, solutionRow3};
     public static int[][] shipPoints = {{0, 0}, {0, 0}, {0, 0}};
 
+    //initialize resources
+    ImageIcon hitIcon = new ImageIcon("res/red.png");
+    ImageIcon missIcon = new ImageIcon("res/white.png");
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -48,11 +52,14 @@ public class Minibattleship extends javax.swing.JFrame {
         button22 = new javax.swing.JButton();
         button31 = new javax.swing.JButton();
         button30 = new javax.swing.JButton();
-        button33 = new javax.swing.JButton();
+        buttonReplay = new javax.swing.JButton();
         button32 = new javax.swing.JButton();
         button20 = new javax.swing.JButton();
+        button33 = new javax.swing.JButton();
+        buttonGiveUp = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setForeground(new java.awt.Color(30, 171, 255));
 
         button00.setText("(0,0)");
         button00.setMaximumSize(new java.awt.Dimension(100, 100));
@@ -184,13 +191,13 @@ public class Minibattleship extends javax.swing.JFrame {
             }
         });
 
-        button33.setText("(3,3)");
-        button33.setMaximumSize(new java.awt.Dimension(100, 100));
-        button33.setMinimumSize(new java.awt.Dimension(100, 100));
-        button33.setPreferredSize(new java.awt.Dimension(100, 100));
-        button33.addActionListener(new java.awt.event.ActionListener() {
+        buttonReplay.setText("Replay");
+        buttonReplay.setMaximumSize(new java.awt.Dimension(100, 100));
+        buttonReplay.setMinimumSize(new java.awt.Dimension(100, 100));
+        buttonReplay.setPreferredSize(new java.awt.Dimension(100, 100));
+        buttonReplay.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                button33ActionPerformed(evt);
+                buttonReplayActionPerformed(evt);
             }
         });
 
@@ -214,6 +221,26 @@ public class Minibattleship extends javax.swing.JFrame {
             }
         });
 
+        button33.setText("(3,3)");
+        button33.setMaximumSize(new java.awt.Dimension(100, 100));
+        button33.setMinimumSize(new java.awt.Dimension(100, 100));
+        button33.setPreferredSize(new java.awt.Dimension(100, 100));
+        button33.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                button33ActionPerformed(evt);
+            }
+        });
+
+        buttonGiveUp.setText("Give up");
+        buttonGiveUp.setMaximumSize(new java.awt.Dimension(100, 100));
+        buttonGiveUp.setMinimumSize(new java.awt.Dimension(100, 100));
+        buttonGiveUp.setPreferredSize(new java.awt.Dimension(100, 100));
+        buttonGiveUp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonGiveUpActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -221,34 +248,46 @@ public class Minibattleship extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(100, 100, 100)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(button02, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(button01, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(button00, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(button03, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(28, 28, 28)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(button12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(button13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(button10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(button11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(button22, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(button21, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(button20, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(button23, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(28, 28, 28)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(button32, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(button33, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(button30, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(button31, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(295, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(button02, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(button01, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(button00, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(28, 28, 28)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(button12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(button10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(button11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(button22, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(button21, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(button20, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(28, 28, 28)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(button32, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(button30, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(button31, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(button03, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(28, 28, 28)
+                                .addComponent(button13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(buttonGiveUp, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(buttonReplay, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(button23, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(28, 28, 28)
+                                .addComponent(button33, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap(287, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(102, Short.MAX_VALUE)
+                .addGap(97, 97, 97)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -260,14 +299,8 @@ public class Minibattleship extends javax.swing.JFrame {
                             .addComponent(button31, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(button22, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(button23, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(button32, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(button33, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(button22, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(button32, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(button00, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -278,15 +311,20 @@ public class Minibattleship extends javax.swing.JFrame {
                             .addComponent(button11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(button02, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(button03, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(button12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(button13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addGap(194, 194, 194))
+                            .addComponent(button02, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(button12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(button23, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(button33, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(button03, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(button13, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(buttonGiveUp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(buttonReplay, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(76, 76, 76))
         );
 
         pack();
@@ -295,91 +333,281 @@ public class Minibattleship extends javax.swing.JFrame {
     private void button00ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button00ActionPerformed
         questionRow0[0] = 1;
         printQuestionArray();
-        checkIfHit(0, 0);
+        if (checkIfHit(0, 0) == true) {
+            button00.setIcon(hitIcon);
+        } else {
+            button00.setIcon(missIcon);
+        }
 
     }//GEN-LAST:event_button00ActionPerformed
     private void button10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button10ActionPerformed
         questionRow0[1] = 1;
         printQuestionArray();
-        checkIfHit(1, 0);
+        if (checkIfHit(1, 0)) {
+            button10.setIcon(hitIcon);
+        } else {
+            button10.setIcon(missIcon);
+        }
+
+
     }//GEN-LAST:event_button10ActionPerformed
     private void button20ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button20ActionPerformed
         questionRow0[2] = 1;
         printQuestionArray();
-        checkIfHit(2, 0);
+
+        if (checkIfHit(2, 0)) {
+            button20.setIcon(hitIcon);
+        } else {
+            button20.setIcon(missIcon);
+        }
     }//GEN-LAST:event_button20ActionPerformed
     private void button30ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button30ActionPerformed
         questionRow0[3] = 1;
         printQuestionArray();
-        checkIfHit(3, 0);
+
+        if (checkIfHit(3, 0)) {
+            button30.setIcon(hitIcon);
+        } else {
+            button30.setIcon(missIcon);
+        }
     }//GEN-LAST:event_button30ActionPerformed
     private void button01ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button01ActionPerformed
         questionRow1[0] = 1;
         printQuestionArray();
-        checkIfHit(0, 1);
+        if (checkIfHit(0, 1)) {
+            button01.setIcon(hitIcon);
+        } else {
+            button01.setIcon(missIcon);
+        }
     }//GEN-LAST:event_button01ActionPerformed
     private void button11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button11ActionPerformed
         questionRow1[1] = 1;
         printQuestionArray();
-        checkIfHit(1, 1);
+        if (checkIfHit(1, 1)) {
+            button11.setIcon(hitIcon);
+        } else {
+            button11.setIcon(missIcon);
+        }
     }//GEN-LAST:event_button11ActionPerformed
     private void button21ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button21ActionPerformed
         questionRow1[2] = 1;
         printQuestionArray();
         checkIfHit(2, 1);
+        if (checkIfHit(2, 1)) {
+            button21.setIcon(hitIcon);
+        } else {
+            button21.setIcon(missIcon);
+        }
+
+
     }//GEN-LAST:event_button21ActionPerformed
     private void button31ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button31ActionPerformed
         questionRow1[3] = 1;
         printQuestionArray();
         checkIfHit(3, 1);
+        if (checkIfHit(3, 1)) {
+            button31.setIcon(hitIcon);
+        } else {
+            button31.setIcon(missIcon);
+        }
     }//GEN-LAST:event_button31ActionPerformed
     private void button02ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button02ActionPerformed
         questionRow2[0] = 1;
         printQuestionArray();
         checkIfHit(0, 2);
+        if (checkIfHit(0, 2)) {
+            button02.setIcon(hitIcon);
+        } else {
+            button02.setIcon(missIcon);
+        }
     }//GEN-LAST:event_button02ActionPerformed
     private void button12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button12ActionPerformed
         questionRow2[1] = 1;
         printQuestionArray();
         checkIfHit(1, 2);
+        if (checkIfHit(1, 2)) {
+            button12.setIcon(hitIcon);
+        } else {
+            button12.setIcon(missIcon);
+        }
     }//GEN-LAST:event_button12ActionPerformed
     private void button22ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button22ActionPerformed
         questionRow2[2] = 1;
         printQuestionArray();
         checkIfHit(2, 2);
+        if (checkIfHit(2, 2)) {
+            button22.setIcon(hitIcon);
+        } else {
+            button22.setIcon(missIcon);
+        }
     }//GEN-LAST:event_button22ActionPerformed
     private void button32ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button32ActionPerformed
         questionRow2[3] = 1;
         printQuestionArray();
         checkIfHit(3, 2);
+        if (checkIfHit(3, 2)) {
+            button32.setIcon(hitIcon);
+        } else {
+            button32.setIcon(missIcon);
+        }
     }//GEN-LAST:event_button32ActionPerformed
     private void button03ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button03ActionPerformed
         questionRow3[0] = 1;
         printQuestionArray();
         checkIfHit(0, 3);
+        if (checkIfHit(0, 3)) {
+            button03.setIcon(hitIcon);
+        } else {
+            button03.setIcon(missIcon);
+        }
     }//GEN-LAST:event_button03ActionPerformed
     private void button13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button13ActionPerformed
         questionRow3[1] = 1;
         printQuestionArray();
         checkIfHit(1, 3);
+        if (checkIfHit(1, 3)) {
+            button13.setIcon(hitIcon);
+        } else {
+            button13.setIcon(missIcon);
+        }
     }//GEN-LAST:event_button13ActionPerformed
     private void button23ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button23ActionPerformed
         questionRow3[2] = 1;
         printQuestionArray();
         checkIfHit(2, 3);
+        if (checkIfHit(2, 3)) {
+            button23.setIcon(hitIcon);
+        } else {
+            button23.setIcon(missIcon);
+        }
     }//GEN-LAST:event_button23ActionPerformed
+
     private void button33ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button33ActionPerformed
         questionRow3[3] = 1;
         printQuestionArray();
         checkIfHit(3, 3);
+        if (checkIfHit(3, 3)) {
+            button33.setIcon(hitIcon);
+        } else {
+            button33.setIcon(missIcon);
+        }
     }//GEN-LAST:event_button33ActionPerformed
+
+    private void buttonReplayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonReplayActionPerformed
+        resetArrays();
+        setBoatRandomly();
+        button00.setIcon(null);
+        button01.setIcon(null);
+        button02.setIcon(null);
+        button03.setIcon(null);
+        button10.setIcon(null);
+        button11.setIcon(null);
+        button12.setIcon(null);
+        button13.setIcon(null);
+        button20.setIcon(null);
+        button21.setIcon(null);
+        button22.setIcon(null);
+        button23.setIcon(null);
+        button30.setIcon(null);
+        button31.setIcon(null);
+        button32.setIcon(null);
+        button33.setIcon(null);
+    }//GEN-LAST:event_buttonReplayActionPerformed
+    public static void resetArrays() {
+        //initialize array, it breaks if I declare it all from the same array for some weird reason
+        int[] resetArray0 = {0, 0, 0, 0};
+        int[] resetArray1 = {0, 0, 0, 0};
+        int[] resetArray2 = {0, 0, 0, 0};
+        int[] resetArray3 = {0, 0, 0, 0};
+
+        int[] resetArray00 = {0, 0, 0, 0};
+        int[] resetArray11 = {0, 0, 0, 0};
+        int[] resetArray22 = {0, 0, 0, 0};
+        int[] resetArray33 = {0, 0, 0, 0};
+
+        questionRow0 = resetArray0;
+        questionRow1 = resetArray1;
+        questionRow2 = resetArray2;
+        questionRow3 = resetArray3;
+        solutionRow0 = resetArray00;
+        solutionRow1 = resetArray11;
+        solutionRow2 = resetArray22;
+        solutionRow3 = resetArray33;
+    }
+    private void buttonGiveUpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonGiveUpActionPerformed
+        if (solutionArray[0][0] == 1) {
+            button00.setIcon(hitIcon);
+        } else {
+            button00.setIcon(missIcon);
+        }
+        if (solutionArray[0][1] == 1) {
+            button01.setIcon(hitIcon);
+        } else {
+            button01.setIcon(missIcon);
+        }
+        if (solutionArray[0][2] == 1) {
+            button02.setIcon(hitIcon);
+        } else {
+            button02.setIcon(missIcon);
+        }
+        if (solutionArray[0][3] == 1) {
+            button03.setIcon(hitIcon);
+        } else {
+            button03.setIcon(missIcon);
+        }
+        if (solutionArray[1][0] == 1) {
+            button10.setIcon(hitIcon);
+        } else {
+            button10.setIcon(missIcon);
+        }
+        if (solutionArray[1][1] == 1) {
+            button11.setIcon(hitIcon);
+        } else {
+            button11.setIcon(missIcon);
+        }
+        if (solutionArray[1][2] == 1) {
+            button12.setIcon(hitIcon);
+        } else {
+            button12.setIcon(missIcon);
+        }
+        if (solutionArray[1][3] == 1) {
+            button13.setIcon(hitIcon);
+        } else {
+            button13.setIcon(missIcon);
+        }
+        if (solutionArray[2][0] == 1) {
+            button20.setIcon(hitIcon);
+        } else {
+            button20.setIcon(missIcon);
+        }
+        if (solutionArray[2][1] == 1) {
+            button21.setIcon(hitIcon);
+        } else {
+            button21.setIcon(missIcon);
+        }
+        if (solutionArray[2][2] == 1) {
+            button22.setIcon(hitIcon);
+        } else {
+            button22.setIcon(missIcon);
+        }
+        if (solutionArray[2][3] == 1) {
+            button23.setIcon(hitIcon);
+        } else {
+            button23.setIcon(missIcon);
+        }
+                if (solutionArray[2][3] == 1) {
+            button23.setIcon(hitIcon);
+        } else {
+            button23.setIcon(missIcon);
+        }
+    }//GEN-LAST:event_buttonGiveUpActionPerformed
 
     public static void setBoatRandomly() {
         int boundary = 3;
         int ax = (int) (Math.round((Math.random()) * boundary));
         int ay = (int) (Math.round((Math.random()) * boundary));
 
-        //protects against corners
+        //protects against corners = only 1/16 chance that this would cause an exception and code would break
         if (ax == 0) {
             if (ay == 0 || ay == boundary) {
                 ax = (int) (Math.round((Math.random()) * boundary));
@@ -470,15 +698,22 @@ public class Minibattleship extends javax.swing.JFrame {
         shipPoints[2][1] = cy;
         printSolutionArray();
     }
+    //question x is the  x coordinates of the button the user clicked and wants to check.
+    //question y is the  y coordinates of the button the user clicked and wants to check.
 
-    public static void checkIfHit(int questionX, int questionY) {
-        for (int i = 0; i <= 2; i++) {
+    public static boolean checkIfHit(int questionX, int questionY) {
+        boolean isHit = false;
+        System.out.println("question X : " + questionX);
+        System.out.println("question Y : " + questionY);
 
-            if (questionX == shipPoints[i][0] && questionY == shipPoints[i][1]) {
-                System.out.println("hit!!! :)   ");
-            }
+        if (solutionArray[questionY][questionX] == 1) {
+            System.out.println("you hit my cat");
+            isHit = true;
 
         }
+        System.out.println("\n");
+        return isHit;
+
     }
 
     public static void printQuestionArray() {
@@ -499,7 +734,6 @@ public class Minibattleship extends javax.swing.JFrame {
         System.out.println(Arrays.toString(solutionRow2));
         System.out.println(Arrays.toString(solutionRow3));
         System.out.println(" ");
-
     }
 
     public static void main(String args[]) {
@@ -541,28 +775,7 @@ public class Minibattleship extends javax.swing.JFrame {
             }
         });
 
-        //initialize resources
-        ImageIcon hitIcon = new ImageIcon("res/red.jpg");
-        ImageIcon missIcon = new ImageIcon("res/white.jpg");
-
-        //initialize array:
-        int[] resetArray0 = {0, 0, 0, 0};
-        int[] resetArray1 = {0, 0, 0, 0};
-        int[] resetArray2 = {0, 0, 0, 0};
-        int[] resetArray3 = {0, 0, 0, 0};
-
-        int[] resetArray00 = {0, 0, 0, 0};
-        int[] resetArray11 = {0, 0, 0, 0};
-        int[] resetArray22 = {0, 0, 0, 0};
-        int[] resetArray33 = {0, 0, 0, 0};
-        questionRow0 = resetArray0;
-        questionRow1 = resetArray1;
-        questionRow2 = resetArray2;
-        questionRow3 = resetArray3;
-        solutionRow0 = resetArray00;
-        solutionRow1 = resetArray11;
-        solutionRow2 = resetArray22;
-        solutionRow3 = resetArray33;
+        resetArrays();
 
         printQuestionArray();
         setBoatRandomly();
@@ -585,5 +798,7 @@ public class Minibattleship extends javax.swing.JFrame {
     private javax.swing.JButton button31;
     private javax.swing.JButton button32;
     private javax.swing.JButton button33;
+    private javax.swing.JButton buttonGiveUp;
+    private javax.swing.JButton buttonReplay;
     // End of variables declaration//GEN-END:variables
 }
