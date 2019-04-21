@@ -382,25 +382,60 @@ public class Minibattleship extends javax.swing.JFrame {
                 ay = (int) (Math.round((Math.random()) * boundary));
             }
         }
+
         int bx = ax, by = ay, cx = ax, cy = ay;
+
         //protects against 3,1 and 3,2
         if (ax == boundary) {
             if (ay == 1 || ay == boundary - 1) {
                 bx = boundary;
                 by = ay - 1;
                 cx = boundary;
-                cy = ax + 1;
+                cy = ay + 1;
+                System.out.println("case 1");
             }
-        }
-
-        //protects against 0,1 and 0,2
-        if (ax == 0) {
+        } //protects against 0,1 and 0,2
+        else if (ax == 0) {
             if (ay == 1 || ay == boundary - 1) {
                 bx = 0;
                 by = ay - 1;
                 cx = 0;
                 cy = ay + 1;
+                System.out.println("case 2");
+            }
+        } //protects against 1,0 and 2,0
+        else if (ay == 0) {
+            if (ax == 1 || ax == boundary - 1) {
+                bx = ax - 1;
+                by = 0;
+                cx = ax + 1;
+                cy = 0;
+                System.out.println("case 3");
+            }
+        } //protects against 1,3 and 2,3
+        else if (ay == boundary) {
+            if (ax == 1 || ax == boundary - 1) {
+                bx = ax - 1;
+                by = boundary;
+                cx = ax + 1;
+                cy = boundary;
+                System.out.println("case 4");
+            }
+        } else {//treat as not an exception (it is not in the border)
+            int directionInt = (int) (Math.round((Math.random()) * 1));
+            if (directionInt == 0) {//direction is left and right
 
+                System.out.println("case 5");
+                bx = ax - 1;
+                by = ax;
+                cx = ax + 1;
+                cy = ax;
+            } else {//direction is up and down
+                System.out.println("case 6");
+                bx = ax;
+                by = ax - 1;
+                cx = ax;
+                cy = ax + 1;
             }
         }
 
