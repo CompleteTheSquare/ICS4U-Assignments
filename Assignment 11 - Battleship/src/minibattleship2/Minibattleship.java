@@ -22,12 +22,9 @@ public class Minibattleship extends javax.swing.JFrame {
     }
 
     public static int[] questionRow0, questionRow1, questionRow2, questionRow3;
-    public static int[] solutionRow0, solutionRow1, solution2, solutionRow3;
-    public static int[][] questionArray, solutionArray;
-    public static int[] resetArray0 = {0, 0, 0, 0};
-    public static int[] resetArray1 = {0, 0, 0, 0};
-    public static int[] resetArray2 = {0, 0, 0, 0};
-    public static int[] resetArray3 = {0, 0, 0, 0};
+    public static int[] solutionRow0, solutionRow1, solutionRow2, solutionRow3;
+    public static int[][] questionArray, solutionArray = {solutionRow0, solutionRow1, solutionRow2, solutionRow3};
+    public static int[][] shipPoints = {{0, 0}, {0, 0}, {0, 0}};
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -298,76 +295,89 @@ public class Minibattleship extends javax.swing.JFrame {
     private void button00ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button00ActionPerformed
         questionRow0[0] = 1;
         printQuestionArray();
+        checkIfHit(0, 0);
+
     }//GEN-LAST:event_button00ActionPerformed
     private void button10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button10ActionPerformed
         questionRow0[1] = 1;
         printQuestionArray();
+        checkIfHit(1, 0);
     }//GEN-LAST:event_button10ActionPerformed
     private void button20ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button20ActionPerformed
         questionRow0[2] = 1;
         printQuestionArray();
+        checkIfHit(2, 0);
     }//GEN-LAST:event_button20ActionPerformed
     private void button30ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button30ActionPerformed
         questionRow0[3] = 1;
         printQuestionArray();
+        checkIfHit(3, 0);
     }//GEN-LAST:event_button30ActionPerformed
     private void button01ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button01ActionPerformed
         questionRow1[0] = 1;
         printQuestionArray();
+        checkIfHit(0, 1);
     }//GEN-LAST:event_button01ActionPerformed
     private void button11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button11ActionPerformed
         questionRow1[1] = 1;
         printQuestionArray();
+        checkIfHit(1, 1);
     }//GEN-LAST:event_button11ActionPerformed
     private void button21ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button21ActionPerformed
         questionRow1[2] = 1;
         printQuestionArray();
+        checkIfHit(2, 1);
     }//GEN-LAST:event_button21ActionPerformed
     private void button31ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button31ActionPerformed
         questionRow1[3] = 1;
         printQuestionArray();
+        checkIfHit(3, 1);
     }//GEN-LAST:event_button31ActionPerformed
     private void button02ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button02ActionPerformed
         questionRow2[0] = 1;
         printQuestionArray();
+        checkIfHit(0, 2);
     }//GEN-LAST:event_button02ActionPerformed
     private void button12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button12ActionPerformed
         questionRow2[1] = 1;
         printQuestionArray();
+        checkIfHit(1, 2);
     }//GEN-LAST:event_button12ActionPerformed
     private void button22ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button22ActionPerformed
         questionRow2[2] = 1;
         printQuestionArray();
+        checkIfHit(2, 2);
     }//GEN-LAST:event_button22ActionPerformed
     private void button32ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button32ActionPerformed
         questionRow2[3] = 1;
         printQuestionArray();
+        checkIfHit(3, 2);
     }//GEN-LAST:event_button32ActionPerformed
     private void button03ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button03ActionPerformed
         questionRow3[0] = 1;
         printQuestionArray();
+        checkIfHit(0, 3);
     }//GEN-LAST:event_button03ActionPerformed
     private void button13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button13ActionPerformed
         questionRow3[1] = 1;
         printQuestionArray();
+        checkIfHit(1, 3);
     }//GEN-LAST:event_button13ActionPerformed
     private void button23ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button23ActionPerformed
         questionRow3[2] = 1;
         printQuestionArray();
+        checkIfHit(2, 3);
     }//GEN-LAST:event_button23ActionPerformed
     private void button33ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button33ActionPerformed
         questionRow3[3] = 1;
         printQuestionArray();
+        checkIfHit(3, 3);
     }//GEN-LAST:event_button33ActionPerformed
 
     public static void setBoatRandomly() {
         int boundary = 3;
         int ax = (int) (Math.round((Math.random()) * boundary));
         int ay = (int) (Math.round((Math.random()) * boundary));
-
-        int[] firstPosition = {ax, ay};
-
-        System.out.println("ax: " + ax + " ay: " + ay);
 
         //protects against corners
         if (ax == 0) {
@@ -427,44 +437,69 @@ public class Minibattleship extends javax.swing.JFrame {
 
                 System.out.println("case 5");
                 bx = ax - 1;
-                by = ax;
+                by = ay;
                 cx = ax + 1;
-                cy = ax;
+                cy = ay;
             } else {//direction is up and down
                 System.out.println("case 6");
                 bx = ax;
-                by = ax - 1;
+                by = ay - 1;
                 cx = ax;
-                cy = ax + 1;
+                cy = ay + 1;
             }
         }
+        System.out.println(" ");
+        System.out.println(" ax: " + ax);
+        System.out.println(" ay: " + ay);
+        System.out.println(" bx: " + bx);
+        System.out.println(" by: " + by);
+        System.out.println(" cx: " + cx);
+        System.out.println(" cy: " + cy);
 
-        System.out.println("ax: " + ax + " ay: " + ay);
-        System.out.println("bx: " + bx + " by: " + by);
-        System.out.println("cx: " + cx + " cy: " + cy);
+        int[][] holder1 = {solutionRow0, solutionRow1, solutionRow2, solutionRow3};
+        solutionArray = holder1;
+        solutionArray[ax][ay] = 1;
+        solutionArray[bx][by] = 1;
+        solutionArray[cx][cy] = 1;
 
-        /*
-        if (ax == 0 && ay == boundary) { // checks if number is in the corner 
-            //rechooses another number ax if it is boundary
-            System.out.println("rechoosing ax");
-            ax = (int) (Math.round((Math.random()) * 4));
+        shipPoints[0][0] = ax;
+        shipPoints[0][1] = ay;
+        shipPoints[1][0] = bx;
+        shipPoints[1][1] = by;
+        shipPoints[2][0] = cx;
+        shipPoints[2][1] = cy;
+        printSolutionArray();
+    }
+
+    public static void checkIfHit(int questionX, int questionY) {
+        for (int i = 0; i <= 2; i++) {
+
+            if (questionX == shipPoints[i][0] && questionY == shipPoints[i][1]) {
+                System.out.println("hit!!! :)   ");
+            }
+
         }
-
-        if (ay == 0 || ay == 4) { // checks if number is in the up/down border, 
-            //prints cats if it is then rechooses another number
-            System.out.println("cats");
-            ay = (int) (Math.round((Math.random()) * 4));
-        }
-         */
     }
 
     public static void printQuestionArray() {
+        int[][] holder0 = {questionRow0, questionRow1, questionRow2, questionRow3};
+        questionArray = holder0;
         System.out.println("Question Array : ");
         System.out.println(Arrays.toString(questionRow0));
         System.out.println(Arrays.toString(questionRow1));
         System.out.println(Arrays.toString(questionRow2));
         System.out.println(Arrays.toString(questionRow3));
         System.out.println(" ");
+    }
+
+    public static void printSolutionArray() {
+        System.out.println("Solution Array : ");
+        System.out.println(Arrays.toString(solutionRow0));
+        System.out.println(Arrays.toString(solutionRow1));
+        System.out.println(Arrays.toString(solutionRow2));
+        System.out.println(Arrays.toString(solutionRow3));
+        System.out.println(" ");
+
     }
 
     public static void main(String args[]) {
@@ -478,16 +513,24 @@ public class Minibattleship extends javax.swing.JFrame {
                 if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
+
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Minibattleship.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Minibattleship.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Minibattleship.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Minibattleship.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Minibattleship.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Minibattleship.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Minibattleship.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Minibattleship.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
@@ -503,10 +546,24 @@ public class Minibattleship extends javax.swing.JFrame {
         ImageIcon missIcon = new ImageIcon("res/white.jpg");
 
         //initialize array:
+        int[] resetArray0 = {0, 0, 0, 0};
+        int[] resetArray1 = {0, 0, 0, 0};
+        int[] resetArray2 = {0, 0, 0, 0};
+        int[] resetArray3 = {0, 0, 0, 0};
+
+        int[] resetArray00 = {0, 0, 0, 0};
+        int[] resetArray11 = {0, 0, 0, 0};
+        int[] resetArray22 = {0, 0, 0, 0};
+        int[] resetArray33 = {0, 0, 0, 0};
         questionRow0 = resetArray0;
         questionRow1 = resetArray1;
         questionRow2 = resetArray2;
         questionRow3 = resetArray3;
+        solutionRow0 = resetArray00;
+        solutionRow1 = resetArray11;
+        solutionRow2 = resetArray22;
+        solutionRow3 = resetArray33;
+
         printQuestionArray();
         setBoatRandomly();
     }
