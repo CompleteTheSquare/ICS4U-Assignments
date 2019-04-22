@@ -29,8 +29,8 @@ public class Minibattleship extends javax.swing.JFrame {
     public static int[][] shipPoints = {{0, 0}, {0, 0}, {0, 0}};
     public static int counter = 0;
     //initialize resources
-    ImageIcon hitIcon = new ImageIcon("res/red.png");
-    ImageIcon missIcon = new ImageIcon("res/white.png");
+    ImageIcon hitIcon = new ImageIcon("red.png");
+    ImageIcon missIcon = new ImageIcon("white.png");
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -59,14 +59,10 @@ public class Minibattleship extends javax.swing.JFrame {
         button20 = new javax.swing.JButton();
         button33 = new javax.swing.JButton();
         buttonGiveUp = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setForeground(new java.awt.Color(30, 171, 255));
 
-        button00.setBackground(new java.awt.Color(204, 204, 255));
-        button00.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
-        button00.setForeground(new java.awt.Color(255, 102, 102));
         button00.setText("(0,0)");
         button00.setMaximumSize(new java.awt.Dimension(100, 100));
         button00.setMinimumSize(new java.awt.Dimension(100, 100));
@@ -77,9 +73,6 @@ public class Minibattleship extends javax.swing.JFrame {
             }
         });
 
-        button03.setBackground(new java.awt.Color(204, 204, 255));
-        button03.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
-        button03.setForeground(new java.awt.Color(255, 102, 102));
         button03.setText("(0,3)");
         button03.setMaximumSize(new java.awt.Dimension(100, 100));
         button03.setMinimumSize(new java.awt.Dimension(100, 100));
@@ -90,9 +83,6 @@ public class Minibattleship extends javax.swing.JFrame {
             }
         });
 
-        button01.setBackground(new java.awt.Color(204, 204, 255));
-        button01.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
-        button01.setForeground(new java.awt.Color(255, 102, 102));
         button01.setText("(0,1)");
         button01.setMaximumSize(new java.awt.Dimension(100, 100));
         button01.setMinimumSize(new java.awt.Dimension(100, 100));
@@ -103,9 +93,6 @@ public class Minibattleship extends javax.swing.JFrame {
             }
         });
 
-        button02.setBackground(new java.awt.Color(204, 204, 255));
-        button02.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
-        button02.setForeground(new java.awt.Color(255, 102, 102));
         button02.setText("(0,2)");
         button02.setMaximumSize(new java.awt.Dimension(100, 100));
         button02.setMinimumSize(new java.awt.Dimension(100, 100));
@@ -116,9 +103,6 @@ public class Minibattleship extends javax.swing.JFrame {
             }
         });
 
-        button11.setBackground(new java.awt.Color(204, 204, 255));
-        button11.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
-        button11.setForeground(new java.awt.Color(255, 102, 102));
         button11.setText("(1,1)");
         button11.setMaximumSize(new java.awt.Dimension(100, 100));
         button11.setMinimumSize(new java.awt.Dimension(100, 100));
@@ -129,9 +113,6 @@ public class Minibattleship extends javax.swing.JFrame {
             }
         });
 
-        button10.setBackground(new java.awt.Color(204, 204, 255));
-        button10.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
-        button10.setForeground(new java.awt.Color(255, 102, 102));
         button10.setText("(1,0)");
         button10.setMaximumSize(new java.awt.Dimension(100, 100));
         button10.setMinimumSize(new java.awt.Dimension(100, 100));
@@ -142,9 +123,6 @@ public class Minibattleship extends javax.swing.JFrame {
             }
         });
 
-        button13.setBackground(new java.awt.Color(204, 204, 255));
-        button13.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
-        button13.setForeground(new java.awt.Color(255, 102, 102));
         button13.setText("(1,3)");
         button13.setMaximumSize(new java.awt.Dimension(100, 100));
         button13.setMinimumSize(new java.awt.Dimension(100, 100));
@@ -155,9 +133,6 @@ public class Minibattleship extends javax.swing.JFrame {
             }
         });
 
-        button12.setBackground(new java.awt.Color(204, 204, 255));
-        button12.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
-        button12.setForeground(new java.awt.Color(255, 102, 102));
         button12.setText("(1,2)");
         button12.setMaximumSize(new java.awt.Dimension(100, 100));
         button12.setMinimumSize(new java.awt.Dimension(100, 100));
@@ -168,9 +143,6 @@ public class Minibattleship extends javax.swing.JFrame {
             }
         });
 
-        button23.setBackground(new java.awt.Color(204, 204, 255));
-        button23.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
-        button23.setForeground(new java.awt.Color(255, 102, 102));
         button23.setText("(2,3)");
         button23.setMaximumSize(new java.awt.Dimension(100, 100));
         button23.setMinimumSize(new java.awt.Dimension(100, 100));
@@ -181,9 +153,6 @@ public class Minibattleship extends javax.swing.JFrame {
             }
         });
 
-        button21.setBackground(new java.awt.Color(204, 204, 255));
-        button21.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
-        button21.setForeground(new java.awt.Color(255, 102, 102));
         button21.setText("(2,1)");
         button21.setMaximumSize(new java.awt.Dimension(100, 100));
         button21.setMinimumSize(new java.awt.Dimension(100, 100));
@@ -194,9 +163,6 @@ public class Minibattleship extends javax.swing.JFrame {
             }
         });
 
-        button22.setBackground(new java.awt.Color(204, 204, 255));
-        button22.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
-        button22.setForeground(new java.awt.Color(255, 102, 102));
         button22.setText("(2,2)");
         button22.setMaximumSize(new java.awt.Dimension(100, 100));
         button22.setMinimumSize(new java.awt.Dimension(100, 100));
@@ -207,9 +173,6 @@ public class Minibattleship extends javax.swing.JFrame {
             }
         });
 
-        button31.setBackground(new java.awt.Color(204, 204, 255));
-        button31.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
-        button31.setForeground(new java.awt.Color(255, 102, 102));
         button31.setText("(3,1)");
         button31.setMaximumSize(new java.awt.Dimension(100, 100));
         button31.setMinimumSize(new java.awt.Dimension(100, 100));
@@ -220,9 +183,6 @@ public class Minibattleship extends javax.swing.JFrame {
             }
         });
 
-        button30.setBackground(new java.awt.Color(204, 204, 255));
-        button30.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
-        button30.setForeground(new java.awt.Color(255, 102, 102));
         button30.setText("(3,0)");
         button30.setMaximumSize(new java.awt.Dimension(100, 100));
         button30.setMinimumSize(new java.awt.Dimension(100, 100));
@@ -233,9 +193,6 @@ public class Minibattleship extends javax.swing.JFrame {
             }
         });
 
-        buttonReplay.setBackground(new java.awt.Color(204, 204, 255));
-        buttonReplay.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
-        buttonReplay.setForeground(new java.awt.Color(255, 102, 102));
         buttonReplay.setText("Replay");
         buttonReplay.setMaximumSize(new java.awt.Dimension(100, 100));
         buttonReplay.setMinimumSize(new java.awt.Dimension(100, 100));
@@ -246,9 +203,6 @@ public class Minibattleship extends javax.swing.JFrame {
             }
         });
 
-        button32.setBackground(new java.awt.Color(204, 204, 255));
-        button32.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
-        button32.setForeground(new java.awt.Color(255, 102, 102));
         button32.setText("(3,2)");
         button32.setMaximumSize(new java.awt.Dimension(100, 100));
         button32.setMinimumSize(new java.awt.Dimension(100, 100));
@@ -259,9 +213,6 @@ public class Minibattleship extends javax.swing.JFrame {
             }
         });
 
-        button20.setBackground(new java.awt.Color(204, 204, 255));
-        button20.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
-        button20.setForeground(new java.awt.Color(255, 102, 102));
         button20.setText("(2,0)");
         button20.setMaximumSize(new java.awt.Dimension(100, 100));
         button20.setMinimumSize(new java.awt.Dimension(100, 100));
@@ -272,9 +223,6 @@ public class Minibattleship extends javax.swing.JFrame {
             }
         });
 
-        button33.setBackground(new java.awt.Color(204, 204, 255));
-        button33.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
-        button33.setForeground(new java.awt.Color(255, 102, 102));
         button33.setText("(3,3)");
         button33.setMaximumSize(new java.awt.Dimension(100, 100));
         button33.setMinimumSize(new java.awt.Dimension(100, 100));
@@ -285,9 +233,6 @@ public class Minibattleship extends javax.swing.JFrame {
             }
         });
 
-        buttonGiveUp.setBackground(new java.awt.Color(204, 204, 255));
-        buttonGiveUp.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
-        buttonGiveUp.setForeground(new java.awt.Color(255, 102, 102));
         buttonGiveUp.setText("Give up");
         buttonGiveUp.setMaximumSize(new java.awt.Dimension(100, 100));
         buttonGiveUp.setMinimumSize(new java.awt.Dimension(100, 100));
@@ -297,10 +242,6 @@ public class Minibattleship extends javax.swing.JFrame {
                 buttonGiveUpActionPerformed(evt);
             }
         });
-
-        jLabel1.setFont(new java.awt.Font("Comic Sans MS", 1, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(102, 102, 255));
-        jLabel1.setText("Battleship");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -343,18 +284,12 @@ public class Minibattleship extends javax.swing.JFrame {
                                 .addComponent(button23, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(28, 28, 28)
                                 .addComponent(button33, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(95, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addGap(291, 291, 291))
+                .addContainerGap(287, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(41, 41, 41)
-                .addComponent(jLabel1)
-                .addGap(42, 42, 42)
+                .addGap(97, 97, 97)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -380,7 +315,7 @@ public class Minibattleship extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(button02, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(button12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(button23, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -705,7 +640,7 @@ public class Minibattleship extends javax.swing.JFrame {
 
     public void checkIfOver() {
         if (counter == 3) {
-            buttonGiveUp.setText("You won :) Please play again");
+            buttonGiveUp.setText("You won :) ");
             System.out.println("You won :) ");
         }
         System.out.println(counter);
@@ -909,6 +844,5 @@ public class Minibattleship extends javax.swing.JFrame {
     private javax.swing.JButton button33;
     private javax.swing.JButton buttonGiveUp;
     private javax.swing.JButton buttonReplay;
-    private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }
