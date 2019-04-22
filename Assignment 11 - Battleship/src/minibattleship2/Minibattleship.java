@@ -5,10 +5,7 @@
  */
 package minibattleship2;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import javax.swing.ImageIcon;
-import javax.swing.JButton;
 
 /**
  *
@@ -25,7 +22,7 @@ public class Minibattleship extends javax.swing.JFrame {
 
     public static int[] questionRow0, questionRow1, questionRow2, questionRow3;
     public static int[] solutionRow0, solutionRow1, solutionRow2, solutionRow3;
-    public static int[][] questionArray, solutionArray = {solutionRow0, solutionRow1, solutionRow2, solutionRow3};
+    public static int[][]  solutionArray = {solutionRow0, solutionRow1, solutionRow2, solutionRow3};
     public static int[][] shipPoints = {{0, 0}, {0, 0}, {0, 0}};
     public static int counter = 0;
     //initialize resources
@@ -397,9 +394,14 @@ public class Minibattleship extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * This method is called when button (0,0) is pressed. It calls a helper
+     * method.
+     *
+     * @param evt
+     */
     private void button00ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button00ActionPerformed
         questionRow0[0] = 1;
-        printQuestionArray();
         if (checkIfHit(0, 0) == true) {
             button00.setIcon(hitIcon);
             counter++;
@@ -407,11 +409,15 @@ public class Minibattleship extends javax.swing.JFrame {
         } else {
             button00.setIcon(missIcon);
         }
-
     }//GEN-LAST:event_button00ActionPerformed
+    /**
+     * This method is called when button (1,0) is pressed. It calls a helper
+     * method.
+     *
+     * @param evt
+     */
     private void button10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button10ActionPerformed
         questionRow0[1] = 1;
-        printQuestionArray();
         if (checkIfHit(1, 0)) {
             button10.setIcon(hitIcon);
             counter++;
@@ -419,13 +425,15 @@ public class Minibattleship extends javax.swing.JFrame {
         } else {
             button10.setIcon(missIcon);
         }
-
-
     }//GEN-LAST:event_button10ActionPerformed
+    /**
+     * This method is called when button (2,0) is pressed. It calls a helper
+     * method.
+     *
+     * @param evt
+     */
     private void button20ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button20ActionPerformed
         questionRow0[2] = 1;
-        printQuestionArray();
-
         if (checkIfHit(2, 0)) {
             button20.setIcon(hitIcon);
             counter++;
@@ -434,10 +442,14 @@ public class Minibattleship extends javax.swing.JFrame {
             button20.setIcon(missIcon);
         }
     }//GEN-LAST:event_button20ActionPerformed
+    /**
+     * This method is called when button (3,0) is pressed. It calls a helper
+     * method.
+     *
+     * @param evt
+     */
     private void button30ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button30ActionPerformed
         questionRow0[3] = 1;
-        printQuestionArray();
-
         if (checkIfHit(3, 0)) {
             button30.setIcon(hitIcon);
             counter++;
@@ -446,9 +458,14 @@ public class Minibattleship extends javax.swing.JFrame {
             button30.setIcon(missIcon);
         }
     }//GEN-LAST:event_button30ActionPerformed
+    /**
+     * This method is called when button (0,1) is pressed. It calls a helper
+     * method.
+     *
+     * @param evt
+     */
     private void button01ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button01ActionPerformed
         questionRow1[0] = 1;
-        printQuestionArray();
         if (checkIfHit(0, 1)) {
             button01.setIcon(hitIcon);
             counter++;
@@ -457,9 +474,14 @@ public class Minibattleship extends javax.swing.JFrame {
             button01.setIcon(missIcon);
         }
     }//GEN-LAST:event_button01ActionPerformed
+    /**
+     * This method is called when button (1,1) is pressed. It calls a helper
+     * method.
+     *
+     * @param evt
+     */
     private void button11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button11ActionPerformed
         questionRow1[1] = 1;
-        printQuestionArray();
         if (checkIfHit(1, 1)) {
             button11.setIcon(hitIcon);
             counter++;
@@ -468,10 +490,14 @@ public class Minibattleship extends javax.swing.JFrame {
             button11.setIcon(missIcon);
         }
     }//GEN-LAST:event_button11ActionPerformed
+    /**
+     * This method is called when button (2,1) is pressed. It calls a helper
+     * method.
+     *
+     * @param evt
+     */
     private void button21ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button21ActionPerformed
         questionRow1[2] = 1;
-        printQuestionArray();
-        checkIfHit(2, 1);
         if (checkIfHit(2, 1)) {
             button21.setIcon(hitIcon);
             counter++;
@@ -479,13 +505,15 @@ public class Minibattleship extends javax.swing.JFrame {
         } else {
             button21.setIcon(missIcon);
         }
-
-
     }//GEN-LAST:event_button21ActionPerformed
+    /**
+     * This method is called when button (3,1) is pressed. It calls a helper
+     * method.
+     *
+     * @param evt
+     */
     private void button31ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button31ActionPerformed
         questionRow1[3] = 1;
-        printQuestionArray();
-        checkIfHit(3, 1);
         if (checkIfHit(3, 1)) {
             button31.setIcon(hitIcon);
             counter++;
@@ -494,10 +522,14 @@ public class Minibattleship extends javax.swing.JFrame {
             button31.setIcon(missIcon);
         }
     }//GEN-LAST:event_button31ActionPerformed
+    /**
+     * This method is called when button (0,2) is pressed. It calls a helper
+     * method.
+     *
+     * @param evt
+     */
     private void button02ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button02ActionPerformed
         questionRow2[0] = 1;
-        printQuestionArray();
-        checkIfHit(0, 2);
         if (checkIfHit(0, 2)) {
             button02.setIcon(hitIcon);
             counter++;
@@ -506,10 +538,14 @@ public class Minibattleship extends javax.swing.JFrame {
             button02.setIcon(missIcon);
         }
     }//GEN-LAST:event_button02ActionPerformed
+    /**
+     * This method is called when button (1,2) is pressed. It calls a helper
+     * method.
+     *
+     * @param evt
+     */
     private void button12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button12ActionPerformed
         questionRow2[1] = 1;
-        printQuestionArray();
-        checkIfHit(1, 2);
         if (checkIfHit(1, 2)) {
             button12.setIcon(hitIcon);
             counter++;
@@ -518,10 +554,14 @@ public class Minibattleship extends javax.swing.JFrame {
             button12.setIcon(missIcon);
         }
     }//GEN-LAST:event_button12ActionPerformed
+    /**
+     * This method is called when button (2,2) is pressed. It calls a helper
+     * method.
+     *
+     * @param evt
+     */
     private void button22ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button22ActionPerformed
         questionRow2[2] = 1;
-        printQuestionArray();
-        checkIfHit(2, 2);
         if (checkIfHit(2, 2)) {
             button22.setIcon(hitIcon);
             counter++;
@@ -530,10 +570,14 @@ public class Minibattleship extends javax.swing.JFrame {
             button22.setIcon(missIcon);
         }
     }//GEN-LAST:event_button22ActionPerformed
+    /**
+     * This method is called when button (3,2) is pressed. It calls a helper
+     * method.
+     *
+     * @param evt
+     */
     private void button32ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button32ActionPerformed
         questionRow2[3] = 1;
-        printQuestionArray();
-        checkIfHit(3, 2);
         if (checkIfHit(3, 2)) {
             button32.setIcon(hitIcon);
             counter++;
@@ -542,10 +586,14 @@ public class Minibattleship extends javax.swing.JFrame {
             button32.setIcon(missIcon);
         }
     }//GEN-LAST:event_button32ActionPerformed
+    /**
+     * This method is called when button (0,3) is pressed. It calls a helper
+     * method.
+     *
+     * @param evt
+     */
     private void button03ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button03ActionPerformed
         questionRow3[0] = 1;
-        printQuestionArray();
-        checkIfHit(0, 3);
         if (checkIfHit(0, 3)) {
             button03.setIcon(hitIcon);
             counter++;
@@ -554,10 +602,14 @@ public class Minibattleship extends javax.swing.JFrame {
             button03.setIcon(missIcon);
         }
     }//GEN-LAST:event_button03ActionPerformed
+    /**
+     * This method is called when button (1,3) is pressed. It calls a helper
+     * method.
+     *
+     * @param evt
+     */
     private void button13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button13ActionPerformed
         questionRow3[1] = 1;
-        printQuestionArray();
-        checkIfHit(1, 3);
         if (checkIfHit(1, 3)) {
             button13.setIcon(hitIcon);
             counter++;
@@ -566,10 +618,14 @@ public class Minibattleship extends javax.swing.JFrame {
             button13.setIcon(missIcon);
         }
     }//GEN-LAST:event_button13ActionPerformed
+    /**
+     * This method is called when button (2,3) is pressed. It calls a helper
+     * method.
+     *
+     * @param evt
+     */
     private void button23ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button23ActionPerformed
         questionRow3[2] = 1;
-        printQuestionArray();
-        checkIfHit(2, 3);
         if (checkIfHit(2, 3)) {
             button23.setIcon(hitIcon);
             counter++;
@@ -578,10 +634,14 @@ public class Minibattleship extends javax.swing.JFrame {
             button23.setIcon(missIcon);
         }
     }//GEN-LAST:event_button23ActionPerformed
+    /**
+     * This method is called when button (3,3) is pressed. It calls a helper
+     * method.
+     *
+     * @param evt
+     */
     private void button33ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button33ActionPerformed
         questionRow3[3] = 1;
-        printQuestionArray();
-        checkIfHit(3, 3);
         if (checkIfHit(3, 3)) {
             button33.setIcon(hitIcon);
             counter++;
@@ -590,6 +650,12 @@ public class Minibattleship extends javax.swing.JFrame {
             button33.setIcon(missIcon);
         }
     }//GEN-LAST:event_button33ActionPerformed
+    /**
+     * This method is called when the replay button is pressed It calls a helper
+     * method and removes all icons
+     *
+     * @param evt
+     */
     private void buttonReplayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonReplayActionPerformed
         resetArrays();
         setBoatRandomly();
@@ -610,6 +676,11 @@ public class Minibattleship extends javax.swing.JFrame {
         button32.setIcon(null);
         button33.setIcon(null);
     }//GEN-LAST:event_buttonReplayActionPerformed
+    /**
+     * This method is called when the replay button is pressed It calls a helper
+     * method and removes all icons
+     *
+     */
     public static void resetArrays() {
         //initialize array, it breaks if I declare it all from the same array for some weird reason
         int[] resetArray0 = {0, 0, 0, 0};
@@ -631,6 +702,14 @@ public class Minibattleship extends javax.swing.JFrame {
         solutionRow2 = resetArray22;
         solutionRow3 = resetArray33;
     }
+
+    /**
+     * This method displays all the icons as white then checks which ones are
+     * red
+     *
+     * @param evt
+     */
+
     private void buttonGiveUpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonGiveUpActionPerformed
         button00.setIcon(missIcon);
         button01.setIcon(missIcon);
@@ -661,7 +740,6 @@ public class Minibattleship extends javax.swing.JFrame {
         if (checkIfHit(0, 3)) {
             button03.setIcon(hitIcon);
         }
-
         if (checkIfHit(1, 0)) {
             button10.setIcon(hitIcon);
         }
@@ -674,7 +752,6 @@ public class Minibattleship extends javax.swing.JFrame {
         if (checkIfHit(1, 3)) {
             button13.setIcon(hitIcon);
         }
-
         if (checkIfHit(2, 0)) {
             button20.setIcon(hitIcon);
         }
@@ -687,7 +764,6 @@ public class Minibattleship extends javax.swing.JFrame {
         if (checkIfHit(2, 3)) {
             button23.setIcon(hitIcon);
         }
-
         if (checkIfHit(3, 0)) {
             button30.setIcon(hitIcon);
         }
@@ -700,17 +776,24 @@ public class Minibattleship extends javax.swing.JFrame {
         if (checkIfHit(3, 3)) {
             button33.setIcon(hitIcon);
         }
-
     }//GEN-LAST:event_buttonGiveUpActionPerformed
 
+    /**
+     * This method checks if the game is over or not and changes the button text
+     * when the game is over.
+     *
+     * no parameters
+     */
     public void checkIfOver() {
         if (counter == 3) {
             buttonGiveUp.setText("You won :) Please play again");
-            System.out.println("You won :) ");
         }
         System.out.println(counter);
     }
 
+    /**
+     * Randomly places the boat somewhere on the grid
+     */
     public static void setBoatRandomly() {
         int boundary = 3;
         int ax = (int) (Math.round((Math.random()) * boundary));
@@ -739,7 +822,6 @@ public class Minibattleship extends javax.swing.JFrame {
                 by = ay - 1;
                 cx = boundary;
                 cy = ay + 1;
-                System.out.println("case 1");
             }
         } //protects against 0,1 and 0,2
         else if (ax == 0) {
@@ -748,7 +830,6 @@ public class Minibattleship extends javax.swing.JFrame {
                 by = ay - 1;
                 cx = 0;
                 cy = ay + 1;
-                System.out.println("case 2");
             }
         } //protects against 1,0 and 2,0
         else if (ay == 0) {
@@ -757,7 +838,6 @@ public class Minibattleship extends javax.swing.JFrame {
                 by = 0;
                 cx = ax + 1;
                 cy = 0;
-                System.out.println("case 3");
             }
         } //protects against 1,3 and 2,3
         else if (ay == boundary) {
@@ -766,32 +846,21 @@ public class Minibattleship extends javax.swing.JFrame {
                 by = boundary;
                 cx = ax + 1;
                 cy = boundary;
-                System.out.println("case 4");
             }
         } else {//treat as not an exception (it is not in the border)
             int directionInt = (int) (Math.round((Math.random()) * 1));
             if (directionInt == 0) {//direction is left and right
-
-                System.out.println("case 5");
                 bx = ax - 1;
                 by = ay;
                 cx = ax + 1;
                 cy = ay;
             } else {//direction is up and down
-                System.out.println("case 6");
                 bx = ax;
                 by = ay - 1;
                 cx = ax;
                 cy = ay + 1;
             }
         }
-        System.out.println(" ");
-        System.out.println(" ax: " + ax);
-        System.out.println(" ay: " + ay);
-        System.out.println(" bx: " + bx);
-        System.out.println(" by: " + by);
-        System.out.println(" cx: " + cx);
-        System.out.println(" cy: " + cy);
 
         int[][] holder1 = {solutionRow0, solutionRow1, solutionRow2, solutionRow3};
         solutionArray = holder1;
@@ -805,45 +874,35 @@ public class Minibattleship extends javax.swing.JFrame {
         shipPoints[1][1] = by;
         shipPoints[2][0] = cx;
         shipPoints[2][1] = cy;
-        printSolutionArray();
     }
     //question x is the  x coordinates of the button the user clicked and wants to check.
     //question y is the  y coordinates of the button the user clicked and wants to check.
 
+    /**
+     * Checks if the boat is hit or not
+     *
+     * @param questionX the X value of the coordinate chosen
+     * @param questionY the Y value of the coordinate chosen
+     * @return if the boat is hit or not
+     */
     public static boolean checkIfHit(int questionX, int questionY) {
         boolean isHit = false;
-        System.out.println("question X : " + questionX);
-        System.out.println("question Y : " + questionY);
-
         if (solutionArray[questionY][questionX] == 1) {
-            System.out.println("you hit my cat");
             isHit = true;
-
         }
-        System.out.println("\n");
         return isHit;
-
     }
 
-    public static void printQuestionArray() {
-        int[][] holder0 = {questionRow0, questionRow1, questionRow2, questionRow3};
-        questionArray = holder0;
-        System.out.println("Question Array : ");
-        System.out.println(Arrays.toString(questionRow0));
-        System.out.println(Arrays.toString(questionRow1));
-        System.out.println(Arrays.toString(questionRow2));
-        System.out.println(Arrays.toString(questionRow3));
-        System.out.println(" ");
-    }
+    /**
+     * Prints user Array
+     */
 
-    public static void printSolutionArray() {
-        System.out.println("Solution Array : ");
-        System.out.println(Arrays.toString(solutionRow0));
-        System.out.println(Arrays.toString(solutionRow1));
-        System.out.println(Arrays.toString(solutionRow2));
-        System.out.println(Arrays.toString(solutionRow3));
-        System.out.println(" ");
-    }
+
+
+    /**
+     * Prints solution Array
+     */
+
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -885,8 +944,6 @@ public class Minibattleship extends javax.swing.JFrame {
         });
 
         resetArrays();
-
-        printQuestionArray();
         setBoatRandomly();
     }
 
