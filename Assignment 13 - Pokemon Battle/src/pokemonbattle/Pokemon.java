@@ -7,22 +7,13 @@ package pokemonbattle;
  *
  * @author anonymous
  */
-public class Pokemon {
+abstract class Pokemon {
 
-    // the Pokemon's name
     protected String name;
-
-    // the Pokemon's original hit points (i.e. health points); cannot be negative
     protected int originalHP;
-
-    // the Pokemon's current hit points (i.e. health points); cannot be negative
     protected int hp;
-
-    // the Pokemon's combat points (i.e. attack points); cannot be negative
     protected int cp;
-
     protected String type;
-
     protected String weakness;
 
     /**
@@ -54,44 +45,41 @@ public class Pokemon {
             this.originalHP = hp;
             this.hp = hp;
         }
-
+/*
         if (cp < 0) {
             this.cp = 0;
         } else {
             this.cp = cp;
         }
+        */
     }
 
-    /**
-     *
-     * @return the name of the Pokemon
-     */
+//return Pokemon name
     public String getName() {
         return this.name;
     }
 
-    /**
-     * @return the Pokemon's HP
-     */
+//returns the Pokemon's HP
+
     public int getHP() {
         return this.hp;
     }
 
-    /**
-     * @return the Pokemon's CP
-     */
+//returns the Pokemon's CP
     public int getCP() {
         return this.cp;
     }
 
+    
+//returns the Pokemon's CP
     public String getType() {
         return this.type;
     }
-
+    
+//returns the Pokemon's CP
     public String getWeakness() {
         return this.weakness;
     }
-
     /**
      * Changes the Pokemon's HP to another number. Since HP cannot be negative,
      * if newHP is negative, it changes to 0.
