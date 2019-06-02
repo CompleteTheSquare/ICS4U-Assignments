@@ -30,9 +30,7 @@ public class gui extends javax.swing.JFrame {
     private void initComponents() {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("war");
-        setBackground(new java.awt.Color(153, 204, 255));
-        setForeground(java.awt.Color.darkGray);
+        setForeground(java.awt.Color.lightGray);
         setMaximumSize(new java.awt.Dimension(600, 600));
         setMinimumSize(new java.awt.Dimension(600, 600));
         setName("aaa"); // NOI18N
@@ -49,6 +47,8 @@ public class gui extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 300, Short.MAX_VALUE)
         );
+
+        getAccessibleContext().setAccessibleName("");
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
