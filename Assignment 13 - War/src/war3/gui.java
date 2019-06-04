@@ -5,7 +5,12 @@
  */
 package war3;
 
-import javax.swing.JFrame;
+import java.util.Arrays;
+import java.util.List;
+import static war3.Deck22.computerRanks;
+import static war3.Deck22.computerSuits;
+import static war3.Deck22.playerRanks;
+import static war3.Deck22.playerSuits;
 
 /**
  *
@@ -29,29 +34,181 @@ public class gui extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        exitApplication = new javax.swing.JButton();
+        startGameButton = new javax.swing.JButton();
+        giveUpButton = new javax.swing.JButton();
+        drawButton = new javax.swing.JButton();
+        warButton = new javax.swing.JButton();
+        playerCard0 = new javax.swing.JLabel();
+        playerCard1 = new javax.swing.JLabel();
+        playerCard2 = new javax.swing.JLabel();
+        playerCard3 = new javax.swing.JLabel();
+        computerCard0 = new javax.swing.JLabel();
+        computerCard1 = new javax.swing.JLabel();
+        computerCard2 = new javax.swing.JLabel();
+        computerCard3 = new javax.swing.JLabel();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setAutoRequestFocus(false);
-        setForeground(java.awt.Color.lightGray);
-        setMaximumSize(new java.awt.Dimension(6, 6));
-        setMinimumSize(new java.awt.Dimension(6, 6));
-        setName("aaa"); // NOI18N
-        setUndecorated(true);
-        setPreferredSize(new java.awt.Dimension(6, 6));
+        setMaximumSize(new java.awt.Dimension(600, 600));
+        setMinimumSize(new java.awt.Dimension(600, 600));
+        setPreferredSize(new java.awt.Dimension(600, 600));
+
+        exitApplication.setText("Exit Application");
+        exitApplication.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                exitApplicationActionPerformed(evt);
+            }
+        });
+
+        startGameButton.setText("start game");
+        startGameButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                startGameButtonActionPerformed(evt);
+            }
+        });
+
+        giveUpButton.setText("give up");
+        giveUpButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                giveUpButtonActionPerformed(evt);
+            }
+        });
+
+        drawButton.setText("draw");
+        drawButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                drawButtonActionPerformed(evt);
+            }
+        });
+
+        warButton.setText("draw");
+        warButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                warButtonActionPerformed(evt);
+            }
+        });
+
+        playerCard0.setText("playerCard0");
+
+        playerCard1.setText("playerCard1");
+
+        playerCard2.setText("playerCard2");
+
+        playerCard3.setText("playerCard3");
+
+        computerCard0.setText("computerCard0");
+
+        computerCard1.setText("computerCard1");
+
+        computerCard2.setText("computerCard2");
+
+        computerCard3.setText("computerCard3");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 15, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(startGameButton)
+                        .addGap(98, 98, 98)
+                        .addComponent(giveUpButton)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(exitApplication))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(49, 49, 49)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(playerCard0, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(computerCard0, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(drawButton))
+                        .addGap(109, 109, 109)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(playerCard1, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(computerCard1, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(playerCard2, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(computerCard2, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(playerCard3, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(computerCard3, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(warButton))
+                        .addGap(0, 22, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 21, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(75, 75, 75)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(computerCard0, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(203, 203, 203)
+                                .addComponent(playerCard0, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(computerCard1, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(203, 203, 203)
+                                .addComponent(playerCard1, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(computerCard2, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(203, 203, 203)
+                            .addComponent(playerCard2, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(computerCard3, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(203, 203, 203)
+                        .addComponent(playerCard3, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(drawButton)
+                    .addComponent(warButton))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 60, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(exitApplication)
+                    .addComponent(startGameButton)
+                    .addComponent(giveUpButton))
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void exitApplicationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitApplicationActionPerformed
+        System.exit(0);
+    }//GEN-LAST:event_exitApplicationActionPerformed
+
+    private void startGameButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_startGameButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_startGameButtonActionPerformed
+
+    private void giveUpButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_giveUpButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_giveUpButtonActionPerformed
+
+    private void drawButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_drawButtonActionPerformed
+
+    }//GEN-LAST:event_drawButtonActionPerformed
+
+    private void warButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_warButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_warButtonActionPerformed
+
+    //converts deck (array) to deck (arrayList)
+    private static void convert(String[] computerRanks, String[] playerRanks, String[] computerSuits, String[] playerSuits){
+        List<String> computerRanksAL = Arrays.asList(computerRanks);
+         List<String> playerRanksAL = Arrays.asList(playerRanks);
+        List<String> computerSuitAL = Arrays.asList(computerSuits);
+         List<String> playerSuitAL = Arrays.asList(playerSuits);
+    }
+    
+    
+    
     /**
      * @param args the command line arguments
      */
@@ -83,21 +240,35 @@ public class gui extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
 
+
                 new gui().setVisible(true);
-                
-                boolean[][] check = new boolean[12][3]; //
-                int[][] deck = new int[12][3];
-                int[][] playerHand = new int[12][3];
-                int[][] computerHand = new int[12][3];
-                
+            
                 
                 
                 
                 Deck22.splitDeck();
+                convert(computerRanks, playerRanks, computerSuits, playerSuits);
+                
+                
             }
+  
+            
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel computerCard0;
+    private javax.swing.JLabel computerCard1;
+    private javax.swing.JLabel computerCard2;
+    private javax.swing.JLabel computerCard3;
+    private javax.swing.JButton drawButton;
+    private javax.swing.JButton exitApplication;
+    private javax.swing.JButton giveUpButton;
+    private javax.swing.JLabel playerCard0;
+    private javax.swing.JLabel playerCard1;
+    private javax.swing.JLabel playerCard2;
+    private javax.swing.JLabel playerCard3;
+    private javax.swing.JButton startGameButton;
+    private javax.swing.JButton warButton;
     // End of variables declaration//GEN-END:variables
 }
