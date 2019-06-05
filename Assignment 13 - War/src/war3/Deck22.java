@@ -147,17 +147,9 @@ public class Deck22 extends gui {
         int number = random.nextInt(12) + 13;
         return number;
     }
-    
 
-    
-    private static void checkValues(ArrayList <String> computerRanksAL, ArrayList <String> playerRanksAL, ArrayList <String> computerSuitAL, ArrayList <String> playerSuitAL){
+    private static void checkValues(ArrayList<String> computerRanksAL, ArrayList<String> playerRanksAL, ArrayList<String> computerSuitAL, ArrayList<String> playerSuitAL) {
         System.out.println("we all scream potato");
     }
-           
-    
-    public static ArrayList <String> cRanksAL(ArrayList <String>computerRanksAL){
-    return computerRanksAL;
-    }
-    
-    
+
 }

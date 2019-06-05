@@ -5,12 +5,14 @@
  */
 package war3;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import static war3.Deck22.computerRanks;
 import static war3.Deck22.computerSuits;
 import static war3.Deck22.playerRanks;
 import static war3.Deck22.playerSuits;
+import static war3.gameMethods.checkValues;
 
 /**
  *
@@ -18,6 +20,12 @@ import static war3.Deck22.playerSuits;
  */
 public class gui extends javax.swing.JFrame {
 
+    public static ArrayList<String> computerRanksAL = new ArrayList<String>(Arrays.asList(computerRanks));
+    public static ArrayList<String> playerRanksAL = new ArrayList<String>(Arrays.asList(playerRanks));
+    public static ArrayList<String> computerSuitAL = new ArrayList<String>(Arrays.asList(computerSuits));
+    public static ArrayList<String> playerSuitAL = new ArrayList<String>(Arrays.asList(playerSuits));
+
+    
     /**
      * Creates new form gui
      */
@@ -192,6 +200,7 @@ public class gui extends javax.swing.JFrame {
     }//GEN-LAST:event_giveUpButtonActionPerformed
 
     private void drawButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_drawButtonActionPerformed
+        gameMethods.checkValues(computerRanksAL, playerRanksAL, computerSuitAL, playerSuitAL);
 
     }//GEN-LAST:event_drawButtonActionPerformed
 
@@ -199,16 +208,6 @@ public class gui extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_warButtonActionPerformed
 
-    //converts deck (array) to deck (arrayList)
-    private static void convert(String[] computerRanks, String[] playerRanks, String[] computerSuits, String[] playerSuits){
-        List<String> computerRanksAL = Arrays.asList(computerRanks);
-         List<String> playerRanksAL = Arrays.asList(playerRanks);
-        List<String> computerSuitAL = Arrays.asList(computerSuits);
-         List<String> playerSuitAL = Arrays.asList(playerSuits);
-    }
-    
-    
-    
     /**
      * @param args the command line arguments
      */
@@ -240,19 +239,14 @@ public class gui extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
 
-
                 new gui().setVisible(true);
-            
-                
-                
-                
+
                 Deck22.splitDeck();
-                convert(computerRanks, playerRanks, computerSuits, playerSuits);
-                
-                
+
+                System.out.println("cats");
+
             }
-  
-            
+
         });
     }
 
