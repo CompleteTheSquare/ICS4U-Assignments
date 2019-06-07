@@ -6,6 +6,7 @@
 package war3;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Collections;
 import java.util.Random;
 
@@ -17,28 +18,25 @@ public class gameMethods extends gui {
 
     //pick random card from either player's hand and store the random card's values and suits into an array
     //whoever has a higher rank (string) will win
-    public static void checkValues(ArrayList<String> computerRanksAL, ArrayList<String> playerRanksAL, ArrayList<String> computerSuitAL, ArrayList<String> playerSuitAL) {
-
-        System.out.println(computerRanksAL);
-        System.out.println(playerRanksAL);
-        System.out.println(computerSuitAL);
-        System.out.println(playerSuitAL);
+    public static void checkValues() {
 
         ArrayList<String> compSuitHolder = new ArrayList<String>();
         ArrayList<String> compRankHolder = new ArrayList<String>();
         ArrayList<String> playerSuitHolder = new ArrayList<String>();
         ArrayList<String> playerRankHolder = new ArrayList<String>();
 
-        int playerRandom = randomPlayerCard();
-        int computerRandom = randomComputerCard();
-        Collections.addAll(compRankHolder, computerRanksAL.get(computerRandom));
-        Collections.addAll(compSuitHolder, computerSuitAL.get(computerRandom));
-        Collections.addAll(playerRankHolder, playerRanksAL.get(playerRandom));
-        Collections.addAll(playerSuitHolder, playerSuitAL.get(playerRandom));
-
+        int playerLast = playerRanksAL.size() - 1;
+        int computerLast = computerRanksAL.size() - 1;
+        System.out.println("playerLast: " + playerLast);
+        System.out.println("computerLast: " + computerLast);
+        Collections.addAll(compRankHolder, computerRanksAL.get(computerLast));
+        Collections.addAll(compSuitHolder, computerSuitsAL.get(computerLast));
+        Collections.addAll(playerRankHolder, playerRanksAL.get(playerLast));
+        Collections.addAll(playerSuitHolder, playerSuitsAL.get(playerLast));
+        System.out.println("");
         System.out.println("random card chosen from player hand is:  " + playerRankHolder + "          " + playerSuitHolder);
         System.out.println("random card chosen from comp hand is:  " + compRankHolder + "          " + compSuitHolder);
-
+        System.out.println("");
         String playerStringHolder = playerRankHolder.get(0);
         String compStringHolder = compRankHolder.get(0);
 
@@ -46,25 +44,52 @@ public class gameMethods extends gui {
 
         int compIntHolder = Integer.parseInt(compStringHolder);
 
+        
+        
+        
         if (playerIntHolder > compIntHolder) {
-            System.out.print("cards will now go to player");
+            System.out.println("");
+            System.out.println("cards will now go to player");
+            System.out.println("PlayerArrayList Suit previous: " + playerSuitsAL);
+            System.out.println("PlayerArrayList Ranks previous: " + playerRanksAL);
+            Collections.addAll(playerSuitsAL, playerSuitHolder.get(0));
+            Collections.addAll(playerRanksAL, playerRankHolder.get(0));
+            computerRanksAL.remove (compRankHolder);
+
+            computerSuitsAL.remove (compSuitHolder);
+            playerRanksAL.remove(playerLast);
+            System.out.println("PlayerArrayList Suit now: " + playerSuitsAL);
+            System.out.println("PlayerArrayList Ranks now: " + playerRanksAL);
+            System.out.println("");
         } else if (playerIntHolder < compIntHolder) {
-            System.out.print("cards will now go to computer");
+            System.out.println("");
+            System.out.println("cards will now go to computer");
+            System.out.println("ComputerArrayList Suit previous: " + computerSuitsAL);
+            System.out.println("ComputerArrayList Ranks previous: " + computerRanksAL);
+            Collections.addAll(computerSuitsAL, compSuitHolder.get(0));
+            Collections.addAll(computerRanksAL, compRankHolder.get(0));
+            //playerRankHolder.remove(playerLast);
+            //playerSuitHolder.remove(playerLast);
+            System.out.println("");
+            System.out.println("ComputerArrayList Suit now: " + computerSuitsAL);
+            System.out.println("ComputerArrayList Ranks now: " + computerRanksAL);
+            System.out.println("");
         } else if (playerIntHolder == compIntHolder) {
-            System.out.print("wartyme");
+            War(computerRanksAL, playerRanksAL, computerSuitsAL, playerSuitsAL);
+            System.out.println("");
+            System.out.println("wartyme");
+            System.out.println("");
         }
 
     }
 
-    private static int randomPlayerCard() {
-        Random random = new Random();
-        int playerNumber = random.nextInt(playerRanksAL.size() - 1);
-        return playerNumber;
+    private static void War(ArrayList<String> computerRanksAL, ArrayList<String> playerRanksAL, ArrayList<String> computerSuitAL, ArrayList<String> playerSuitAL) {
+
+        System.out.println("cats");
+        System.out.println("computer ranks: " + computerRanksAL);
+        System.out.println("computer Suits: " + computerSuitAL);
+        System.out.println("player ranks: " + playerRanksAL);
+        System.out.println("player suits: " + playerSuitAL);
     }
 
-    private static int randomComputerCard() {
-        Random random = new Random();
-        int computerNumber = random.nextInt(computerRanksAL.size() - 1);
-        return computerNumber;
-    }
 }

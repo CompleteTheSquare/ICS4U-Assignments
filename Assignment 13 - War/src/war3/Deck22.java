@@ -9,18 +9,13 @@ import java.util.Set;
 
 public class Deck22 extends gui {
 
-    public static String[] computerRanks = {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13"};
-    public static String[] computerSuits = {"C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "S", "S", "S", "S", "S", "S", "S", "S", "S", "S", "S", "S", "S"};
-    public static String[] playerRanks = {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13"};
-    public static String[] playerSuits = {"D", "D", "D", "D", "D", "D", "D", "D", "D", "D", "D", "D", "D", "H", "H", "H", "H", "H", "H", "H", "H", "H", "H", "H", "H", "H"};
-
     public static void splitDeck() {
 
         System.out.println("starting array:");
-        shuffle(computerRanks, playerRanks, computerSuits, playerSuits);
+        shuffle();
     }
 
-    public static void shuffle(String[] computerRanks, String[] playerRanks, String[] computerSuits, String[] playerSuits) {
+    public static void shuffle() {
         String[] rankHolder = {"defaultRank"};
         String[] suitHolder = {"defaultSuit"};
         System.out.println("original array:");
@@ -46,8 +41,6 @@ public class Deck22 extends gui {
             int r1 = random1();
             int r2 = random2();
 
-            System.out.println(random1());
-            System.out.println(random2());
             rankHolder[0] = computerRanks[r2];
             computerRanks[r2] = computerRanks[r1];
             computerRanks[r1] = rankHolder[0];
@@ -144,12 +137,29 @@ public class Deck22 extends gui {
 
     private static int random2() {
         Random random = new Random();
-        int number = random.nextInt(12) + 13;
+        int number = random.nextInt(12) + 14;
         return number;
     }
 
-    private static void checkValues(ArrayList<String> computerRanksAL, ArrayList<String> playerRanksAL, ArrayList<String> computerSuitAL, ArrayList<String> playerSuitAL) {
-        System.out.println("we all scream potato");
-    }
+    public static void setup() {
+        ArrayList<String> tempHolderSuit = new ArrayList<String>();
+        ArrayList<String> tempHolderRank = new ArrayList<String>();
 
+        Collections.addAll(tempHolderSuit, playerSuitsAL.get(0));
+        Collections.addAll(tempHolderRank, playerRanksAL.get(0));
+        for (int i = 0; i < 25; i++) {
+            playerRanksAL.set(i, playerRanksAL.get(i + 1));
+            playerSuitsAL.set(i, playerSuitsAL.get(i + 1));
+
+        }
+
+        playerRanksAL.remove(playerRanksAL.size() - 1);
+        playerRanksAL.addAll(tempHolderRank);
+        System.out.println("playerSuitsSwitched" + playerRanksAL);
+
+        playerSuitsAL.remove(playerSuitsAL.size() - 1);
+        playerSuitsAL.addAll(tempHolderSuit);
+        System.out.println("playerRanksSwitched" + playerSuitsAL);
+        System.out.println("");
+    }
 }

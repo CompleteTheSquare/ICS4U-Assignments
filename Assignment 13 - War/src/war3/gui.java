@@ -7,6 +7,7 @@ package war3;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import static war3.Deck22.computerRanks;
 import static war3.Deck22.computerSuits;
@@ -20,12 +21,16 @@ import static war3.gameMethods.checkValues;
  */
 public class gui extends javax.swing.JFrame {
 
-    public static ArrayList<String> computerRanksAL = new ArrayList<String>(Arrays.asList(computerRanks));
-    public static ArrayList<String> playerRanksAL = new ArrayList<String>(Arrays.asList(playerRanks));
-    public static ArrayList<String> computerSuitAL = new ArrayList<String>(Arrays.asList(computerSuits));
-    public static ArrayList<String> playerSuitAL = new ArrayList<String>(Arrays.asList(playerSuits));
+    public static String[] computerRanks = {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13"};
+    public static String[] computerSuits = {"C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "C", "S", "S", "S", "S", "S", "S", "S", "S", "S", "S", "S", "S", "S"};
+    public static String[] playerRanks = {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13"};
+    public static String[] playerSuits = {"D", "D", "D", "D", "D", "D", "D", "D", "D", "D", "D", "D", "D", "H", "H", "H", "H", "H", "H", "H", "H", "H", "H", "H", "H", "H"};
 
-    
+    public static ArrayList<String> computerRanksAL = new ArrayList<String>();
+    public static ArrayList<String> playerRanksAL = new ArrayList<String>();
+    public static ArrayList<String> computerSuitsAL = new ArrayList<String>();
+    public static ArrayList<String> playerSuitsAL = new ArrayList<String>();
+
     /**
      * Creates new form gui
      */
@@ -200,7 +205,7 @@ public class gui extends javax.swing.JFrame {
     }//GEN-LAST:event_giveUpButtonActionPerformed
 
     private void drawButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_drawButtonActionPerformed
-        gameMethods.checkValues(computerRanksAL, playerRanksAL, computerSuitAL, playerSuitAL);
+        gameMethods.checkValues();
 
     }//GEN-LAST:event_drawButtonActionPerformed
 
@@ -240,10 +245,36 @@ public class gui extends javax.swing.JFrame {
             public void run() {
 
                 new gui().setVisible(true);
-
+                System.out.println("This is the arrayList previous:");
+                System.out.println("PlayerRank: " + playerRanksAL);
+                System.out.println("PlayerSuit: " + playerSuitsAL);
+                System.out.println("ComputerRank: " + computerRanksAL);
+                System.out.println("ComputerSuit: " + computerSuitsAL);
+                
                 Deck22.splitDeck();
-
+                
+                
+Collections.addAll (computerRanksAL, computerRanks);
+Collections.addAll (computerSuitsAL, computerSuits);
+Collections.addAll (playerRanksAL, playerRanks);
+Collections.addAll (playerSuitsAL, playerSuits);
+                
+                System.out.println("This is the arrayList updated:");
+                System.out.println("PlayerRank: " + playerRanksAL);
+                System.out.println("PlayerSuit: " + playerSuitsAL);
+                System.out.println("ComputerRank: " + computerRanksAL);
+                System.out.println("ComputerSuit: " + computerSuitsAL);
                 System.out.println("cats");
+System.out.println ("");
+                System.out.println("This is the array:");
+                System.out.println("PlayerRank: " + Arrays.toString(playerRanks));
+                System.out.println("PlayerSuit: " + Arrays.toString(playerSuits));
+                System.out.println("ComputerRank: " + Arrays.toString(computerRanks));
+                System.out.println("ComputerSuit: " + Arrays.toString(computerSuits));
+
+                Deck22.setup();
+                
+
 
             }
 
