@@ -37,7 +37,7 @@ public class Gameplay extends Gui {
         System.out.println("last card from player hand is  " + playerRanksAL.get(playerLastCard) + "         " + playerSuitsAL.get(playerLastCard));
         System.out.println("last card from computer hand is  " + computerRanksAL.get(computerLastCard) + "         " + computerSuitsAL.get(computerLastCard));
 
-        //if player card is bigger, add last card from their deck as the last card of the player deck then shuffle both computer and player hands.
+        //if player card is bigger, add last card from their deck as the last card of the player deck.
         if (playerIntHolder > computerIntHolder) {
             System.out.println("Player card is bigger");
             Collections.addAll(playerRanksAL, computerRanksAL.get(computerLastCard));
@@ -52,22 +52,43 @@ public class Gameplay extends Gui {
             playerRanksAL.remove(playerLastCard);
             playerSuitsAL.remove(playerLastCard);
         } else if (playerIntHolder == computerIntHolder) {
+            
+            
+            playerRanksAL.remove(playerLastCard);
+            playerSuitsAL.remove(playerLastCard);
+            computerRanksAL.remove(computerLastCard);
+            computerSuitsAL.remove(computerLastCard);
+            
+            
             System.out.println("war");
+            disableDraw0 = 1;
+
+            if (computerRanksAL.size() < 3 || playerRanksAL.size() < 3) {
+                disableDraw0 = -1;
+            }
+
         }
-        GameSetup.shuffleDeck();
+
         Gui.printStuff();
 
     }
 
-    int counter = 0;
-    ArrayList<String> computerSuits2;
-    ArrayList<String> computerRanks2;
-    ArrayList<String> playerSuits2;
-    ArrayList<String> playerRanks2;
-
     //first, we take the cards and put them down
-    private static void war() {
+    public static void war() {
+        ArrayList<String> RanksWarHolder = new ArrayList<String>();
+        ArrayList<String> SuitsWarHolder = new ArrayList<String>();
+
+        for (int i = 2; i <= 4; i++) {
+
+            RanksWarHolder.add(playerRanksAL.get(playerRanksAL.size() - i));
+            SuitsWarHolder.add(playerSuitsAL.get(playerSuitsAL.size() - i));
+            RanksWarHolder.add(computerRanksAL.get(computerRanksAL.size() - i));
+            SuitsWarHolder.add(computerSuitsAL.get(computerSuitsAL.size() - i));
+
+            System.out.println(RanksWarHolder);
+            System.out.println(SuitsWarHolder);
+
+        }
 
     }
-
 }
