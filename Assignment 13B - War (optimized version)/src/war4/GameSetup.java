@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Random;
+import javax.swing.ImageIcon;
 
 public class GameSetup extends Gui {
 
@@ -16,14 +17,16 @@ public class GameSetup extends Gui {
         Collections.addAll(playerRanksAL, "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13");
         Collections.addAll(playerSuitsAL, "D", "D", "D", "D", "D", "D", "D", "D", "D", "D", "D", "D", "D", "H", "H", "H", "H", "H", "H", "H", "H", "H", "H", "H", "H", "H");
 
+      
+        
     }
 
     public static void shuffleDeck(){
                 for (int i = 0; i < 100; i++) {
             ArrayList<String> tempSuit = new ArrayList<String>();
             ArrayList<String> tempRank = new ArrayList<String>();;
-            int randPlayer = randCard();
-            int randComputer = randCard();
+            int randPlayer = randPlayerCard();
+            int randComputer = randComputerCard();
 
             Collections.addAll(tempRank, computerRanksAL.get(randComputer));
             computerRanksAL.set(randComputer, playerRanksAL.get(randPlayer));
@@ -35,10 +38,17 @@ public class GameSetup extends Gui {
 
         }
     }
-    private static int randCard() {
+    private static int randPlayerCard() {
         Random random = new Random();
-        int number = random.nextInt(26);
+        int number = random.nextInt(playerRanksAL.size());
         return number;
     }
 
+        private static int randComputerCard() {
+        Random random = new Random();
+        int number = random.nextInt(computerRanksAL.size());
+        return number;
+    }
+
+    
 }
