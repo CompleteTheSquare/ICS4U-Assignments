@@ -44,6 +44,7 @@ public class Gameplay extends Gui {
             Collections.addAll(playerSuitsAL, computerSuitsAL.get(computerLastCard));
             computerRanksAL.remove(computerLastCard);
             computerSuitsAL.remove(computerLastCard);
+            GameSetup.shuffleDeck();
 
         } else if (playerIntHolder < computerIntHolder) {
             System.out.println("Computer card is bigger");
@@ -51,44 +52,87 @@ public class Gameplay extends Gui {
             Collections.addAll(computerSuitsAL, playerSuitsAL.get(playerLastCard));
             playerRanksAL.remove(playerLastCard);
             playerSuitsAL.remove(playerLastCard);
+            GameSetup.shuffleDeck();
         } else if (playerIntHolder == computerIntHolder) {
-            
-            
+
             playerRanksAL.remove(playerLastCard);
             playerSuitsAL.remove(playerLastCard);
             computerRanksAL.remove(computerLastCard);
             computerSuitsAL.remove(computerLastCard);
-            
-            
+
             System.out.println("war");
             disableDraw0 = 1;
 
-            if (computerRanksAL.size() < 3 || playerRanksAL.size() < 3) {
-                disableDraw0 = -1;
-            }
-
         }
-
-        Gui.printStuff();
 
     }
 
-    //first, we take the cards and put them down
     public static void war() {
-        ArrayList<String> RanksWarHolder = new ArrayList<String>();
-        ArrayList<String> SuitsWarHolder = new ArrayList<String>();
-
-        for (int i = 2; i <= 4; i++) {
-
-            RanksWarHolder.add(playerRanksAL.get(playerRanksAL.size() - i));
-            SuitsWarHolder.add(playerSuitsAL.get(playerSuitsAL.size() - i));
-            RanksWarHolder.add(computerRanksAL.get(computerRanksAL.size() - i));
-            SuitsWarHolder.add(computerSuitsAL.get(computerSuitsAL.size() - i));
-
-            System.out.println(RanksWarHolder);
-            System.out.println(SuitsWarHolder);
+        //player win
+        if (Integer.parseInt(playerRanksAL.get(playerRanksAL.size() - 1)) > Integer.parseInt(computerRanksAL.get(computerRanksAL.size() - 1))) {
+            System.out.println("player win");
+            System.out.println("player put down: " + Integer.parseInt(playerRanksAL.get(playerRanksAL.size() - 1)));
+            System.out.println("computer put down: " + Integer.parseInt(computerRanksAL.get(computerRanksAL.size() - 1)));
+            playerRanksAL.addAll(RanksWarHolder);
+            playerSuitsAL.addAll(SuitsWarHolder);
+            RanksWarHolder.clear();
+            SuitsWarHolder.clear();
 
         }
+        if (Integer.parseInt(playerRanksAL.get(playerRanksAL.size() - 1)) < Integer.parseInt(computerRanksAL.get(computerRanksAL.size() - 1))) {
+            System.out.println("computer win");
+            System.out.println("player put down: " + Integer.parseInt(playerRanksAL.get(playerRanksAL.size() - 1)));
+            System.out.println("computer put down: " + Integer.parseInt(computerRanksAL.get(computerRanksAL.size() - 1)));
+            computerRanksAL.addAll(RanksWarHolder);
+            computerSuitsAL.addAll(SuitsWarHolder);
+            RanksWarHolder.clear();
+            SuitsWarHolder.clear();
+        }
+        if (Integer.parseInt(playerRanksAL.get(playerRanksAL.size() - 1)) == Integer.parseInt(computerRanksAL.get(computerRanksAL.size() - 1))) {
+            System.out.println("wtf a war tie");
+            System.out.println("player put down: " + Integer.parseInt(playerRanksAL.get(playerRanksAL.size() - 1)));
+            System.out.println("computer put down: " + Integer.parseInt(computerRanksAL.get(computerRanksAL.size() - 1)));
+        }
 
+    }
+
+    public static boolean check1Computer() {
+        boolean Is1 = false;
+        if (computerRanksAL.size() == 1) {
+            System.out.println("player wins");
+            Is1 = true;//returns true if value is 1, game unable to progress
+        }
+        return Is1;
+    }
+
+    public static boolean check1Player() {
+        boolean Is1 = false;
+        if (playerRanksAL.size() == 1) {
+            System.out.println("computer wins");
+            Is1 = true;//returns true if value is 1, game unable to progress
+        }
+        return Is1;
+    }
+
+    public static boolean check0Player() {
+
+        boolean Is0 = false;
+        if (playerRanksAL.size() == 0) {
+            System.out.println("computer wins");
+            Is0 = true;
+        }
+
+        return Is0;
+    }
+
+    public static boolean check0Computer() {
+
+        boolean Is0 = false;
+        if (computerRanksAL.size() == 0) {
+            System.out.println("player wins");
+            Is0 = true;
+        }
+
+        return Is0;
     }
 }

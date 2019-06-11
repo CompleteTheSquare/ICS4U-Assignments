@@ -7,6 +7,7 @@ package war4;
 
 import java.nio.file.Path;
 import java.util.ArrayList;
+import java.util.Collections;
 import javax.swing.ImageIcon;
 
 /**
@@ -19,10 +20,10 @@ public class Gui extends javax.swing.JFrame {
     public static ArrayList<String> playerRanksAL = new ArrayList<String>();
     public static ArrayList<String> computerSuitsAL = new ArrayList<String>();
     public static ArrayList<String> playerSuitsAL = new ArrayList<String>();
+
+    public static ArrayList<String> RanksWarHolder = new ArrayList<String>();
+    public static ArrayList<String> SuitsWarHolder = new ArrayList<String>();
     static int disableDraw0 = 0;
-    static int disableDraw1 = 0;
-    static int disableDraw2 = 0;
-    static int disableDraw3 = 0;
 
     public Gui() {
         initComponents();
@@ -51,11 +52,14 @@ public class Gui extends javax.swing.JFrame {
         GiveUpButton = new javax.swing.JButton();
         TestButton = new javax.swing.JButton();
         ExitButton = new javax.swing.JButton();
-        ScoreLabel = new javax.swing.JLabel();
+        scoreLabel = new javax.swing.JLabel();
         computerNumberCards = new javax.swing.JLabel();
         playerNumberCards = new javax.swing.JLabel();
         Flip2 = new javax.swing.JButton();
         Flip3 = new javax.swing.JButton();
+        computerCard4 = new javax.swing.JLabel();
+        playerCard4 = new javax.swing.JLabel();
+        Flip4 = new javax.swing.JButton();
 
         javax.swing.GroupLayout jDialog1Layout = new javax.swing.GroupLayout(jDialog1.getContentPane());
         jDialog1.getContentPane().setLayout(jDialog1Layout);
@@ -153,7 +157,7 @@ public class Gui extends javax.swing.JFrame {
             }
         });
 
-        ScoreLabel.setText("Score:");
+        scoreLabel.setText("Score:");
 
         computerNumberCards.setText("26");
 
@@ -167,7 +171,7 @@ public class Gui extends javax.swing.JFrame {
             }
         });
 
-        Flip3.setText("Flip last card");
+        Flip3.setText("Flip third card");
         Flip3.setEnabled(false);
         Flip3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -175,21 +179,38 @@ public class Gui extends javax.swing.JFrame {
             }
         });
 
+        computerCard4.setText("computerCard4");
+        computerCard4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        computerCard4.setMaximumSize(new java.awt.Dimension(200, 250));
+        computerCard4.setMinimumSize(new java.awt.Dimension(200, 250));
+        computerCard4.setPreferredSize(new java.awt.Dimension(200, 250));
+
+        playerCard4.setText("playerCard4");
+        playerCard4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        playerCard4.setMaximumSize(new java.awt.Dimension(200, 250));
+        playerCard4.setMinimumSize(new java.awt.Dimension(200, 250));
+        playerCard4.setPreferredSize(new java.awt.Dimension(200, 250));
+
+        Flip4.setText("Flip last card");
+        Flip4.setEnabled(false);
+        Flip4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Flip4ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(GiveUpButton)
-                            .addComponent(ExitButton))
-                        .addGap(4, 4, 4))
+                    .addComponent(GiveUpButton)
+                    .addComponent(ExitButton)
                     .addComponent(TestButton))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(ScoreLabel)
+                .addComponent(scoreLabel)
                 .addGap(45, 45, 45)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(computerNumberCards)
@@ -219,53 +240,66 @@ public class Gui extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(Flip3)
                             .addComponent(playerCard3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(20, 20, 20))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(computerCard4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Flip4)
+                    .addComponent(playerCard4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(47, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(ScoreLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(101, Short.MAX_VALUE)
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(scoreLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(TestButton)
-                        .addGap(18, 18, 18)
-                        .addComponent(GiveUpButton)
-                        .addGap(26, 26, 26)
-                        .addComponent(ExitButton)
-                        .addGap(177, 177, 177))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 79, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(computerNumberCards)
-                                    .addComponent(computerCard0, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(TestButton)
                                 .addGap(18, 18, 18)
+                                .addComponent(GiveUpButton)
+                                .addGap(26, 26, 26)
+                                .addComponent(ExitButton)
+                                .addGap(177, 177, 177))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
-                                        .addComponent(playerCard0, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(computerNumberCards)
+                                            .addComponent(computerCard0, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                         .addGap(18, 18, 18)
-                                        .addComponent(DrawButton))
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addComponent(playerCard0, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(18, 18, 18)
+                                                .addComponent(DrawButton))
+                                            .addComponent(playerNumberCards)))
                                     .addGroup(layout.createSequentialGroup()
-                                        .addComponent(playerNumberCards)
-                                        .addGap(157, 157, 157))))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(computerCard1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(computerCard2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(computerCard3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(19, 19, 19)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(playerCard1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                        .addComponent(playerCard2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(playerCard3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(Flip1)
-                                    .addComponent(Flip2)
-                                    .addComponent(Flip3))))
-                        .addGap(80, 80, 80))))
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(computerCard1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(computerCard2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(computerCard3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGap(19, 19, 19)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(playerCard1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                                .addComponent(playerCard2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(playerCard3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addGap(18, 18, 18)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(Flip1)
+                                            .addComponent(Flip2)
+                                            .addComponent(Flip3)))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(computerCard4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(19, 19, 19)
+                                        .addComponent(playerCard4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(Flip4)))
+                                .addGap(80, 80, 80)))))
+                .addContainerGap())
         );
 
         pack();
@@ -281,39 +315,58 @@ public class Gui extends javax.swing.JFrame {
         playerCard0.setIcon(playerIcon);
         computerCard0.setIcon(computerIcon);
         Gameplay.compareValues();
-        GameSetup.shuffleDeck();
+        System.out.println("disableDraw = " + disableDraw0);
 
         if (disableDraw0 == 1) {
+            RanksWarHolder.add(computerRanksAL.get(computerRanksAL.size() - 1));
+            SuitsWarHolder.add(computerSuitsAL.get(computerSuitsAL.size() - 1));
+            RanksWarHolder.add(playerRanksAL.get(playerRanksAL.size() - 1));
+            SuitsWarHolder.add(playerSuitsAL.get(playerSuitsAL.size() - 1));
+            playerRanksAL.remove(playerRanksAL.size() - 1);
+            playerSuitsAL.remove(playerSuitsAL.size() - 1);
+            computerRanksAL.remove(computerRanksAL.size() - 1);
+            computerSuitsAL.remove(computerSuitsAL.size() - 1);
             Flip1.setEnabled(true);
-            Flip2.setEnabled(true);
-            Flip3.setEnabled(true);
+
             DrawButton.setEnabled(false);
             System.out.println("disableDraw: " + disableDraw0);
         } else if (disableDraw0 == -1) {
             DrawButton.setEnabled(false);
         }
 
-        playerNumberCards.setText(Integer.toString(playerRanksAL.size()));
-        computerNumberCards.setText(Integer.toString(computerRanksAL.size()));
+        updateScores();
     }//GEN-LAST:event_DrawButtonActionPerformed
 
     private void Flip1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Flip1ActionPerformed
-        String playerFilePath = "src/war4/" + playerRanksAL.get(playerRanksAL.size() - 2) + playerSuitsAL.get(playerSuitsAL.size() - 2) + ".png";
-        String computerFilePath = "src/war4/" + computerRanksAL.get(computerRanksAL.size() - 2) + computerSuitsAL.get(computerSuitsAL.size() - 2) + ".png";
+        String playerFilePath = "src/war4/" + playerRanksAL.get(playerRanksAL.size() - 1) + playerSuitsAL.get(playerSuitsAL.size() - 1) + ".png";
+        String computerFilePath = "src/war4/" + computerRanksAL.get(computerRanksAL.size() - 1) + computerSuitsAL.get(computerSuitsAL.size() - 1) + ".png";
+        RanksWarHolder.add(computerRanksAL.get(computerRanksAL.size() - 1));
+        SuitsWarHolder.add(computerSuitsAL.get(computerSuitsAL.size() - 1));
+        RanksWarHolder.add(playerRanksAL.get(playerRanksAL.size() - 1));
+        SuitsWarHolder.add(playerSuitsAL.get(playerSuitsAL.size() - 1));
         playerRanksAL.remove(playerRanksAL.size() - 1);
-        playerSuitsAL.remove(playerRanksAL.size() - 1);
+        playerSuitsAL.remove(playerSuitsAL.size() - 1);
         computerRanksAL.remove(computerRanksAL.size() - 1);
-        computerSuitsAL.remove(computerRanksAL.size() - 1);
+        computerSuitsAL.remove(computerSuitsAL.size() - 1);
 
         ImageIcon playerIcon = new ImageIcon(playerFilePath);
         ImageIcon computerIcon = new ImageIcon(computerFilePath);
         playerCard1.setIcon(playerIcon);
         computerCard1.setIcon(computerIcon);
         Flip1.setEnabled(false);
+        Flip2.setEnabled(true);
+        updateScores();
+        if (Gameplay.check1Player() == true) {
+            System.out.println("computer wins by flip1");
+            DrawButton.setEnabled(false);
+        } else if (Gameplay.check1Computer() == true) {
+            System.out.println("player wins by flip1");
+            DrawButton.setEnabled(false);
+        }
     }//GEN-LAST:event_Flip1ActionPerformed
 
     private void GiveUpButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GiveUpButtonActionPerformed
-        Gameplay.war();
+
 
     }//GEN-LAST:event_GiveUpButtonActionPerformed
 
@@ -328,33 +381,99 @@ public class Gui extends javax.swing.JFrame {
     private void Flip2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Flip2ActionPerformed
         String playerFilePath = "src/war4/" + playerRanksAL.get(playerRanksAL.size() - 1) + playerSuitsAL.get(playerSuitsAL.size() - 1) + ".png";
         String computerFilePath = "src/war4/" + computerRanksAL.get(computerRanksAL.size() - 1) + computerSuitsAL.get(computerSuitsAL.size() - 1) + ".png";
+
+        RanksWarHolder.add(computerRanksAL.get(computerRanksAL.size() - 1));
+        SuitsWarHolder.add(computerSuitsAL.get(computerSuitsAL.size() - 1));
+        RanksWarHolder.add(playerRanksAL.get(playerRanksAL.size() - 1));
+        SuitsWarHolder.add(playerSuitsAL.get(playerSuitsAL.size() - 1));
+
         playerRanksAL.remove(playerRanksAL.size() - 1);
-        playerSuitsAL.remove(playerRanksAL.size() - 1);
+        playerSuitsAL.remove(playerSuitsAL.size() - 1);
         computerRanksAL.remove(computerRanksAL.size() - 1);
-        computerSuitsAL.remove(computerRanksAL.size() - 1);
+        computerSuitsAL.remove(computerSuitsAL.size() - 1);
 
         ImageIcon playerIcon = new ImageIcon(playerFilePath);
         ImageIcon computerIcon = new ImageIcon(computerFilePath);
         playerCard2.setIcon(playerIcon);
         computerCard2.setIcon(computerIcon);
         Flip2.setEnabled(false);
+        Flip3.setEnabled(true);
+        updateScores();
+        if (Gameplay.check1Player() == true) {
+            System.out.println("computer wins by flip2");
+            DrawButton.setEnabled(false);
+        } else if (Gameplay.check1Computer() == true) {
+            System.out.println("player wins by flip2");
+            DrawButton.setEnabled(false);
+        }
+
     }//GEN-LAST:event_Flip2ActionPerformed
 
     private void Flip3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Flip3ActionPerformed
         String playerFilePath = "src/war4/" + playerRanksAL.get(playerRanksAL.size() - 1) + playerSuitsAL.get(playerSuitsAL.size() - 1) + ".png";
         String computerFilePath = "src/war4/" + computerRanksAL.get(computerRanksAL.size() - 1) + computerSuitsAL.get(computerSuitsAL.size() - 1) + ".png";
 
+        RanksWarHolder.add(computerRanksAL.get(computerRanksAL.size() - 1));
+        SuitsWarHolder.add(computerSuitsAL.get(computerSuitsAL.size() - 1));
+        RanksWarHolder.add(playerRanksAL.get(playerRanksAL.size() - 1));
+        SuitsWarHolder.add(playerSuitsAL.get(playerSuitsAL.size() - 1));
+
         playerRanksAL.remove(playerRanksAL.size() - 1);
-        playerSuitsAL.remove(playerRanksAL.size() - 1);
+        playerSuitsAL.remove(playerSuitsAL.size() - 1);
         computerRanksAL.remove(computerRanksAL.size() - 1);
-        computerSuitsAL.remove(computerRanksAL.size() - 1);
+        computerSuitsAL.remove(computerSuitsAL.size() - 1);
         ImageIcon playerIcon = new ImageIcon(playerFilePath);
         ImageIcon computerIcon = new ImageIcon(computerFilePath);
         playerCard3.setIcon(playerIcon);
         computerCard3.setIcon(computerIcon);
         Flip3.setEnabled(false);
-        Gameplay.war();
+        Flip4.setEnabled(true);
+        updateScores();
+        if (Gameplay.check0Player() == true) {
+            System.out.println("computer wins by flip3");
+            DrawButton.setEnabled(false);
+        } else if (Gameplay.check0Computer() == true) {
+            System.out.println("player wins by flip3");
+            DrawButton.setEnabled(false);
+        }
+
+
     }//GEN-LAST:event_Flip3ActionPerformed
+
+    private void Flip4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Flip4ActionPerformed
+        String playerFilePath = "src/war4/" + playerRanksAL.get(playerRanksAL.size() - 1) + playerSuitsAL.get(playerSuitsAL.size() - 1) + ".png";
+        String computerFilePath = "src/war4/" + computerRanksAL.get(computerRanksAL.size() - 1) + computerSuitsAL.get(computerSuitsAL.size() - 1) + ".png";
+
+        RanksWarHolder.add(computerRanksAL.get(computerRanksAL.size() - 1));
+        SuitsWarHolder.add(computerSuitsAL.get(computerSuitsAL.size() - 1));
+        RanksWarHolder.add(playerRanksAL.get(playerRanksAL.size() - 1));
+        SuitsWarHolder.add(playerSuitsAL.get(playerSuitsAL.size() - 1));
+        System.out.println("RanksWarHolder: " + RanksWarHolder);
+        System.out.println("SuitsWarHolder: " + SuitsWarHolder);
+        Gameplay.war();
+        playerRanksAL.remove(playerRanksAL.size() - 1);
+        playerSuitsAL.remove(playerSuitsAL.size() - 1);
+        computerRanksAL.remove(computerRanksAL.size() - 1);
+        computerSuitsAL.remove(computerSuitsAL.size() - 1);
+
+        ImageIcon playerIcon = new ImageIcon(playerFilePath);
+        ImageIcon computerIcon = new ImageIcon(computerFilePath);
+        playerCard4.setIcon(playerIcon);
+        computerCard4.setIcon(computerIcon);
+        Flip4.setEnabled(false);
+        updateScores();
+        DrawButton.setEnabled(true);
+        disableDraw0 = 0;
+
+        if (Gameplay.check0Player() == true) {
+            System.out.println("computer wins by flip4");
+            DrawButton.setEnabled(false);
+        } else if (Gameplay.check0Computer() == true) {
+            System.out.println("player wins by flip4");
+            DrawButton.setEnabled(false);
+        }
+
+    }//GEN-LAST:event_Flip4ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -397,6 +516,13 @@ public class Gui extends javax.swing.JFrame {
         });
     }
 
+    private void updateScores() {
+        playerNumberCards.setText(Integer.toString(playerRanksAL.size()));
+        computerNumberCards.setText(Integer.toString(computerRanksAL.size()));
+        scoreLabel.setText(Integer.toString(computerRanksAL.size() + playerRanksAL.size()));
+
+    }
+
     public static void printStuff() {
 
         String computer = "";
@@ -412,7 +538,6 @@ public class Gui extends javax.swing.JFrame {
         System.out.println("---------------------------------------------------------");
 
     }
-//if there is war, war=true
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -421,20 +546,23 @@ public class Gui extends javax.swing.JFrame {
     private javax.swing.JButton Flip1;
     private javax.swing.JButton Flip2;
     private javax.swing.JButton Flip3;
+    private javax.swing.JButton Flip4;
     private javax.swing.JButton GiveUpButton;
-    private javax.swing.JLabel ScoreLabel;
     private javax.swing.JButton TestButton;
     private javax.swing.JLabel computerCard0;
     private javax.swing.JLabel computerCard1;
     private javax.swing.JLabel computerCard2;
     private javax.swing.JLabel computerCard3;
+    private javax.swing.JLabel computerCard4;
     private javax.swing.JLabel computerNumberCards;
     private javax.swing.JDialog jDialog1;
     private javax.swing.JLabel playerCard0;
     private javax.swing.JLabel playerCard1;
     private javax.swing.JLabel playerCard2;
     private javax.swing.JLabel playerCard3;
+    private javax.swing.JLabel playerCard4;
     private javax.swing.JLabel playerNumberCards;
+    private javax.swing.JLabel scoreLabel;
     // End of variables declaration//GEN-END:variables
 
 }
