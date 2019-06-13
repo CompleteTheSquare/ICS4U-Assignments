@@ -29,7 +29,7 @@ public class Save extends Gameplay {
     score.add(Integer.toString(counter));
     
 
-        Collections.sort (score);
+        //Collections.sort (score);
         /*
     for (int i = 0; i<=names.size()-1; i++){
         if (score.get(i).equals (Integer.toString(counter))){
@@ -38,10 +38,12 @@ public class Save extends Gameplay {
     }
             if (score.get(i).equals (Integer.toString(counter))){
         
-        */
+
             score.add (score.get(score.size()-1));
             score.set (score.size()-2,score.get(score.size()-3) );
-                        score.set (score.size()-2,score.get(score.size()-3) );
+         score.set (score.size()-2,score.get(score.size()-3) );
+        
+                           */    
         JOptionPane.showMessageDialog (null, "High score successfully saved");
     
     
@@ -54,7 +56,7 @@ public class Save extends Gameplay {
         try {
             String nameHolder;
             int scoreHolder;
-            File inputFile = new File("src/war4/Save.txt");
+            File inputFile = new File("src/war4/save.txt");
             Scanner scanner = new Scanner(inputFile);
 
             for (int i = 0; i <= 4; i++) {
@@ -63,16 +65,8 @@ public class Save extends Gameplay {
             }
             System.out.println("Loaded values (txt to game):");
             System.out.println("Name0: " + names.get(0));
-            System.out.println("Name1: " + names.get(1));
-            System.out.println("Name2: " + names.get(2));
-            System.out.println("Name3: " + names.get(3));
-            System.out.println("Name4: " + names.get(4));
-
             System.out.println("Score0: " + score.get(0));
-            System.out.println("Score1: " + score.get(1));
-            System.out.println("Score2: " + score.get(2));
-            System.out.println("Score3: " + score.get(3));
-            System.out.println("Score4: " + score.get(4));
+
 
             System.out.println("success - file loading");
 

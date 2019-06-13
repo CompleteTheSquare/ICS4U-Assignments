@@ -29,6 +29,7 @@ public class Gui extends javax.swing.JFrame {
     public static int distribution;
     static int disableDraw0 = 0;
     public static int counter = 0;
+    private static boolean iteration = false;
 
     public Gui() {
         initComponents();
@@ -91,48 +92,56 @@ public class Gui extends javax.swing.JFrame {
             }
         });
 
-        computerCard0.setText("computerCard0");
+        computerCard0.setIcon(new javax.swing.ImageIcon(getClass().getResource("/war4/backing.png"))); // NOI18N
+        computerCard0.setText(" ");
         computerCard0.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         computerCard0.setMaximumSize(new java.awt.Dimension(200, 250));
         computerCard0.setMinimumSize(new java.awt.Dimension(200, 250));
         computerCard0.setPreferredSize(new java.awt.Dimension(200, 250));
 
-        playerCard0.setText("playerCard0");
+        playerCard0.setIcon(new javax.swing.ImageIcon(getClass().getResource("/war4/backing.png"))); // NOI18N
+        playerCard0.setText(" ");
         playerCard0.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         playerCard0.setMaximumSize(new java.awt.Dimension(200, 250));
         playerCard0.setMinimumSize(new java.awt.Dimension(200, 250));
         playerCard0.setPreferredSize(new java.awt.Dimension(200, 250));
 
-        playerCard1.setText("playerCard1");
+        playerCard1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/war4/backing.png"))); // NOI18N
+        playerCard1.setText(" ");
         playerCard1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         playerCard1.setMaximumSize(new java.awt.Dimension(200, 250));
         playerCard1.setMinimumSize(new java.awt.Dimension(200, 250));
         playerCard1.setOpaque(true);
         playerCard1.setPreferredSize(new java.awt.Dimension(200, 250));
 
-        computerCard1.setText("computerCard1");
+        computerCard1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/war4/backing.png"))); // NOI18N
+        computerCard1.setText(" ");
         computerCard1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         computerCard1.setPreferredSize(new java.awt.Dimension(200, 250));
 
-        playerCard3.setText("playerCard3");
+        playerCard3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/war4/backing.png"))); // NOI18N
+        playerCard3.setText(" ");
         playerCard3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         playerCard3.setMaximumSize(new java.awt.Dimension(200, 250));
         playerCard3.setMinimumSize(new java.awt.Dimension(200, 250));
         playerCard3.setPreferredSize(new java.awt.Dimension(200, 250));
 
-        computerCard2.setText("computerCard2");
+        computerCard2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/war4/backing.png"))); // NOI18N
+        computerCard2.setText(" ");
         computerCard2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         computerCard2.setMaximumSize(new java.awt.Dimension(200, 250));
         computerCard2.setMinimumSize(new java.awt.Dimension(200, 250));
         computerCard2.setPreferredSize(new java.awt.Dimension(200, 250));
 
-        computerCard3.setText("computerCard3");
+        computerCard3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/war4/backing.png"))); // NOI18N
+        computerCard3.setText(" ");
         computerCard3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         computerCard3.setMaximumSize(new java.awt.Dimension(200, 250));
         computerCard3.setMinimumSize(new java.awt.Dimension(200, 250));
         computerCard3.setPreferredSize(new java.awt.Dimension(200, 250));
 
-        playerCard2.setText("playerCard2");
+        playerCard2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/war4/backing.png"))); // NOI18N
+        playerCard2.setText(" ");
         playerCard2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         playerCard2.setMaximumSize(new java.awt.Dimension(200, 250));
         playerCard2.setMinimumSize(new java.awt.Dimension(200, 250));
@@ -189,13 +198,15 @@ public class Gui extends javax.swing.JFrame {
             }
         });
 
-        computerCard4.setText("computerCard4");
+        computerCard4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/war4/backing.png"))); // NOI18N
+        computerCard4.setText(" ");
         computerCard4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         computerCard4.setMaximumSize(new java.awt.Dimension(200, 250));
         computerCard4.setMinimumSize(new java.awt.Dimension(200, 250));
         computerCard4.setPreferredSize(new java.awt.Dimension(200, 250));
 
-        playerCard4.setText("playerCard4");
+        playerCard4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/war4/backing.png"))); // NOI18N
+        playerCard4.setText(" ");
         playerCard4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         playerCard4.setMaximumSize(new java.awt.Dimension(200, 250));
         playerCard4.setMinimumSize(new java.awt.Dimension(200, 250));
@@ -238,9 +249,7 @@ public class Gui extends javax.swing.JFrame {
                     .addComponent(ExitButton)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(GiveUpButton)
-                                .addGap(20, 20, 20))
+                            .addComponent(GiveUpButton)
                             .addComponent(InstructionsButton))
                         .addGap(74, 74, 74)
                         .addComponent(scoreLabel)
@@ -349,6 +358,10 @@ public class Gui extends javax.swing.JFrame {
         String playerFilePath = "src/war4/res/" + playerRanksAL.get(playerRanksAL.size() - 1) + playerSuitsAL.get(playerSuitsAL.size() - 1) + ".png";
         String computerFilePath = "src/war4/res/" + computerRanksAL.get(computerRanksAL.size() - 1) + computerSuitsAL.get(computerSuitsAL.size() - 1) + ".png";
 
+        if (iteration == true) {
+            setBacking();
+        }
+
         ImageIcon playerIcon = new ImageIcon(playerFilePath);
         ImageIcon computerIcon = new ImageIcon(computerFilePath);
         playerCard0.setIcon(playerIcon);
@@ -375,7 +388,21 @@ public class Gui extends javax.swing.JFrame {
         } else if (disableDraw0 == -1) {
             DrawButton.setEnabled(false);
         }
-
+        if (Gameplay.check0Player() == true) {
+            System.out.println("computer wins by flip4");
+            DrawButton.setEnabled(false);
+            textArea.setText("computer wins by flip4");
+            disableGameButtons();
+        } else if (Gameplay.check0Computer() == true) {
+            System.out.println("player wins by flip4");
+            DrawButton.setEnabled(false);
+            textArea.setText("player wins by flip4");
+            disableGameButtons();
+        } else if (distribution == 0) {
+            textArea.setText("All 10 cards go to the player");
+        } else if (distribution == 1) {
+            textArea.setText("All 10 cards go to the computer");
+        }
         updateScores();
     }//GEN-LAST:event_DrawButtonActionPerformed
 
@@ -399,11 +426,23 @@ public class Gui extends javax.swing.JFrame {
         Flip1.setEnabled(false);
         Flip2.setEnabled(true);
         updateScores();
+        if (Gameplay.check0Player() == true) {
+            System.out.println("computer wins by flip3");
+            disableGameButtons();
+            DrawButton.setEnabled(false);
+        } else if (Gameplay.check0Computer() == true) {
+            System.out.println("player wins by flip3");
+            disableGameButtons();
+            DrawButton.setEnabled(false);
+
+        }
         if (Gameplay.check1Player() == true) {
-            System.out.println("computer wins by flip1");
+            System.out.println("computer wins by flip3");
+            disableGameButtons();
             DrawButton.setEnabled(false);
         } else if (Gameplay.check1Computer() == true) {
-            System.out.println("player wins by flip1");
+            System.out.println("player wins by flip3");
+            disableGameButtons();
             DrawButton.setEnabled(false);
         }
     }//GEN-LAST:event_Flip1ActionPerformed
@@ -426,7 +465,7 @@ public class Gui extends javax.swing.JFrame {
         try {
             Save.load();
         } catch (IOException ex) {
-     System.out.println ("cats oof the loading broke :(  ");
+            System.out.println("cats oof the loading broke :(  ");
         }
     }//GEN-LAST:event_ExitButtonActionPerformed
 
@@ -451,12 +490,23 @@ public class Gui extends javax.swing.JFrame {
         Flip2.setEnabled(false);
         Flip3.setEnabled(true);
         updateScores();
+        if (Gameplay.check0Player() == true) {
+            System.out.println("computer wins by flip3");
+            DrawButton.setEnabled(false);
+            disableGameButtons();
+        } else if (Gameplay.check0Computer() == true) {
+            System.out.println("player wins by flip3");
+            DrawButton.setEnabled(false);
+            disableGameButtons();
+        }
         if (Gameplay.check1Player() == true) {
-            System.out.println("computer wins by flip2");
+            System.out.println("computer wins by flip3");
             DrawButton.setEnabled(false);
+            disableGameButtons();
         } else if (Gameplay.check1Computer() == true) {
-            System.out.println("player wins by flip2");
+            System.out.println("player wins by flip3");
             DrawButton.setEnabled(false);
+            disableGameButtons();
         }
 
     }//GEN-LAST:event_Flip2ActionPerformed
@@ -481,13 +531,26 @@ public class Gui extends javax.swing.JFrame {
         Flip3.setEnabled(false);
         Flip4.setEnabled(true);
         updateScores();
+
         if (Gameplay.check0Player() == true) {
             System.out.println("computer wins by flip3");
             DrawButton.setEnabled(false);
+            disableGameButtons();
         } else if (Gameplay.check0Computer() == true) {
             System.out.println("player wins by flip3");
             DrawButton.setEnabled(false);
+            disableGameButtons();
         }
+        if (Gameplay.check1Player() == true) {
+            System.out.println("computer wins by flip3");
+            DrawButton.setEnabled(false);
+            disableGameButtons();
+        } else if (Gameplay.check1Computer() == true) {
+            System.out.println("player wins by flip3");
+            DrawButton.setEnabled(false);
+            disableGameButtons();
+        }
+
         counter++;
 
     }//GEN-LAST:event_Flip3ActionPerformed
@@ -510,6 +573,7 @@ public class Gui extends javax.swing.JFrame {
 
         ImageIcon playerIcon = new ImageIcon(playerFilePath);
         ImageIcon computerIcon = new ImageIcon(computerFilePath);
+
         playerCard4.setIcon(playerIcon);
         computerCard4.setIcon(computerIcon);
         Flip4.setEnabled(false);
@@ -521,16 +585,18 @@ public class Gui extends javax.swing.JFrame {
             System.out.println("computer wins by flip4");
             DrawButton.setEnabled(false);
             textArea.setText("computer wins by flip4");
+            disableGameButtons();
         } else if (Gameplay.check0Computer() == true) {
             System.out.println("player wins by flip4");
             DrawButton.setEnabled(false);
             textArea.setText("player wins by flip4");
+            disableGameButtons();
         } else if (distribution == 0) {
             textArea.setText("All 10 cards go to the player");
         } else if (distribution == 1) {
             textArea.setText("All 10 cards go to the computer");
         }
-
+        iteration = true;
 
     }//GEN-LAST:event_Flip4ActionPerformed
 
@@ -585,6 +651,29 @@ public class Gui extends javax.swing.JFrame {
         computerNumberCards.setText(Integer.toString(computerRanksAL.size()));
         scoreLabel.setText(Integer.toString(computerRanksAL.size() + playerRanksAL.size()));
 
+    }
+
+    private void setBacking() {
+        String cardBacking = "src/war4/backing.png";
+        ImageIcon cardBackingIcon = new ImageIcon(cardBacking);
+        playerCard0.setIcon(cardBackingIcon);
+        playerCard1.setIcon(cardBackingIcon);
+        playerCard2.setIcon(cardBackingIcon);
+        playerCard3.setIcon(cardBackingIcon);
+        playerCard4.setIcon(cardBackingIcon);
+        computerCard0.setIcon(cardBackingIcon);
+        computerCard1.setIcon(cardBackingIcon);
+        computerCard2.setIcon(cardBackingIcon);
+        computerCard3.setIcon(cardBackingIcon);
+        computerCard4.setIcon(cardBackingIcon);
+    }
+
+    private void disableGameButtons() {
+        DrawButton.setEnabled(false);
+        Flip1.setEnabled(false);
+        Flip2.setEnabled(false);
+        Flip3.setEnabled(false);
+        Flip4.setEnabled(false);
     }
 
     public static void printStuff() {

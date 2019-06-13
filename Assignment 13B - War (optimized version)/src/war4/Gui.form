@@ -192,7 +192,10 @@
     </Component>
     <Component class="javax.swing.JLabel" name="computerCard0">
       <Properties>
-        <Property name="text" type="java.lang.String" value="computerCard0"/>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="3" name="/war4/backing.png"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value=" "/>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
             <LineBorder/>
@@ -211,7 +214,10 @@
     </Component>
     <Component class="javax.swing.JLabel" name="playerCard0">
       <Properties>
-        <Property name="text" type="java.lang.String" value="playerCard0"/>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="3" name="/war4/backing.png"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value=" "/>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
             <LineBorder/>
@@ -230,7 +236,10 @@
     </Component>
     <Component class="javax.swing.JLabel" name="playerCard1">
       <Properties>
-        <Property name="text" type="java.lang.String" value="playerCard1"/>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="3" name="/war4/backing.png"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value=" "/>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
             <LineBorder/>
@@ -250,7 +259,10 @@
     </Component>
     <Component class="javax.swing.JLabel" name="computerCard1">
       <Properties>
-        <Property name="text" type="java.lang.String" value="computerCard1"/>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="3" name="/war4/backing.png"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value=" "/>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
             <LineBorder/>
@@ -263,7 +275,10 @@
     </Component>
     <Component class="javax.swing.JLabel" name="playerCard3">
       <Properties>
-        <Property name="text" type="java.lang.String" value="playerCard3"/>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="3" name="/war4/backing.png"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value=" "/>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
             <LineBorder/>
@@ -282,7 +297,10 @@
     </Component>
     <Component class="javax.swing.JLabel" name="computerCard2">
       <Properties>
-        <Property name="text" type="java.lang.String" value="computerCard2"/>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="3" name="/war4/backing.png"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value=" "/>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
             <LineBorder/>
@@ -301,7 +319,10 @@
     </Component>
     <Component class="javax.swing.JLabel" name="computerCard3">
       <Properties>
-        <Property name="text" type="java.lang.String" value="computerCard3"/>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="3" name="/war4/backing.png"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value=" "/>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
             <LineBorder/>
@@ -320,7 +341,10 @@
     </Component>
     <Component class="javax.swing.JLabel" name="playerCard2">
       <Properties>
-        <Property name="text" type="java.lang.String" value="playerCard2"/>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="3" name="/war4/backing.png"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value=" "/>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
             <LineBorder/>
@@ -405,7 +429,10 @@
     </Component>
     <Component class="javax.swing.JLabel" name="computerCard4">
       <Properties>
-        <Property name="text" type="java.lang.String" value="computerCard4"/>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="3" name="/war4/backing.png"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value=" "/>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
             <LineBorder/>
@@ -424,7 +451,10 @@
     </Component>
     <Component class="javax.swing.JLabel" name="playerCard4">
       <Properties>
-        <Property name="text" type="java.lang.String" value="playerCard4"/>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="3" name="/war4/backing.png"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value=" "/>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
             <LineBorder/>
