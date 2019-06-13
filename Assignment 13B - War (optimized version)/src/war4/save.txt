@@ -1,0 +1,10 @@
+Mew
+100
+Mewtwo 
+200
+Bulbasaur
+300
+Charizard
+400
+Blatoise
+500
