@@ -1,10 +1,5 @@
-Mew
-100
-Mewtwo 
-200
-Bulbasaur
-300
-Charizard
-400
-Blatoise
-500
+10
+20
+30
+40
+50

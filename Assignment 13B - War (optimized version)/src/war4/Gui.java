@@ -27,9 +27,12 @@ public class Gui extends javax.swing.JFrame {
     public static ArrayList<String> RanksWarHolder = new ArrayList<String>();
     public static ArrayList<String> SuitsWarHolder = new ArrayList<String>();
     public static int distribution;
-    static int disableDraw0 = 0;
+
     public static int counter = 0;
     private static boolean iteration = false;
+
+
+    public static int disableDraw0 = 0;
 
     public Gui() {
         initComponents();
@@ -225,7 +228,7 @@ public class Gui extends javax.swing.JFrame {
         textArea.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
         textArea.setLineWrap(true);
         textArea.setRows(5);
-        textArea.setText("welcome to the game yeet");
+        textArea.setText("Welcome to the card game War.");
         textArea.setWrapStyleWord(true);
         textArea.setMaximumSize(new java.awt.Dimension(196, 94));
         textArea.setMinimumSize(new java.awt.Dimension(196, 94));
@@ -355,9 +358,9 @@ public class Gui extends javax.swing.JFrame {
 
     //using the playerLastCard and computerLastCard,  we can get the ranks and the values of the card stored at the indexes
     private void DrawButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DrawButtonActionPerformed
-        String playerFilePath = "src/war4/res/" + playerRanksAL.get(playerRanksAL.size() - 1) + playerSuitsAL.get(playerSuitsAL.size() - 1) + ".png";
-        String computerFilePath = "src/war4/res/" + computerRanksAL.get(computerRanksAL.size() - 1) + computerSuitsAL.get(computerSuitsAL.size() - 1) + ".png";
-
+       
+            String playerFilePath = "src/war4/res/" + playerRanksAL.get(playerRanksAL.size() - 1) + playerSuitsAL.get(playerSuitsAL.size() - 1) + ".png";
+    String computerFilePath = "src/war4/res/" + computerRanksAL.get(computerRanksAL.size() - 1) + computerSuitsAL.get(computerSuitsAL.size() - 1) + ".png";
         if (iteration == true) {
             setBacking();
         }
@@ -366,7 +369,7 @@ public class Gui extends javax.swing.JFrame {
         ImageIcon computerIcon = new ImageIcon(computerFilePath);
         playerCard0.setIcon(playerIcon);
         computerCard0.setIcon(computerIcon);
-        Gameplay.compareValues();
+        int holder = Gameplay.compareValues();
         System.out.println("disableDraw = " + disableDraw0);
         counter++;
         distribution = Gameplay.playerComp();
@@ -389,35 +392,37 @@ public class Gui extends javax.swing.JFrame {
             DrawButton.setEnabled(false);
         }
         if (Gameplay.check0Player() == true) {
-            System.out.println("computer wins by flip4");
+            System.out.println("computer wins by draw");
             DrawButton.setEnabled(false);
-            textArea.setText("computer wins by flip4");
+            textArea.setText("computer wins by draw");
             disableGameButtons();
         } else if (Gameplay.check0Computer() == true) {
-            System.out.println("player wins by flip4");
+            System.out.println("player wins by draw");
             DrawButton.setEnabled(false);
-            textArea.setText("player wins by flip4");
+            textArea.setText("player wins by draw");
             disableGameButtons();
-        } else if (distribution == 0) {
-            textArea.setText("All 10 cards go to the player");
-        } else if (distribution == 1) {
-            textArea.setText("All 10 cards go to the computer");
+                            try {
+                    Save.Save();
+                } catch (IOException ex) {
+                    Logger.getLogger(Gui.class.getName()).log(Level.SEVERE, null, ex);
+                }
+        } else if (holder == 0) {
+            textArea.setText("The cards go to the player");
+        } else if (holder == 1) {
+            textArea.setText("The cards go to the computer");
+        } else if (holder == -1) {
+            textArea.setText("War!!");
         }
         updateScores();
     }//GEN-LAST:event_DrawButtonActionPerformed
 
     private void Flip1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Flip1ActionPerformed
-        String playerFilePath = "src/war4/res/" + playerRanksAL.get(playerRanksAL.size() - 1) + playerSuitsAL.get(playerSuitsAL.size() - 1) + ".png";
-        String computerFilePath = "src/war4/res/" + computerRanksAL.get(computerRanksAL.size() - 1) + computerSuitsAL.get(computerSuitsAL.size() - 1) + ".png";
+                   String playerFilePath = "src/war4/res/" + playerRanksAL.get(playerRanksAL.size() - 1) + playerSuitsAL.get(playerSuitsAL.size() - 1) + ".png";
+    String computerFilePath = "src/war4/res/" + computerRanksAL.get(computerRanksAL.size() - 1) + computerSuitsAL.get(computerSuitsAL.size() - 1) + ".png";
+        
         counter++;
-        RanksWarHolder.add(computerRanksAL.get(computerRanksAL.size() - 1));
-        SuitsWarHolder.add(computerSuitsAL.get(computerSuitsAL.size() - 1));
-        RanksWarHolder.add(playerRanksAL.get(playerRanksAL.size() - 1));
-        SuitsWarHolder.add(playerSuitsAL.get(playerSuitsAL.size() - 1));
-        playerRanksAL.remove(playerRanksAL.size() - 1);
-        playerSuitsAL.remove(playerSuitsAL.size() - 1);
-        computerRanksAL.remove(computerRanksAL.size() - 1);
-        computerSuitsAL.remove(computerSuitsAL.size() - 1);
+        addToHolderArray();
+        removeFromMainArray();
 
         ImageIcon playerIcon = new ImageIcon(playerFilePath);
         ImageIcon computerIcon = new ImageIcon(computerFilePath);
@@ -430,20 +435,34 @@ public class Gui extends javax.swing.JFrame {
             System.out.println("computer wins by flip3");
             disableGameButtons();
             DrawButton.setEnabled(false);
+            textArea.setText("computer wins!");
         } else if (Gameplay.check0Computer() == true) {
             System.out.println("player wins by flip3");
             disableGameButtons();
             DrawButton.setEnabled(false);
+            textArea.setText("player wins!");
+                            try {
+                    Save.Save();
+                } catch (IOException ex) {
+                    Logger.getLogger(Gui.class.getName()).log(Level.SEVERE, null, ex);
+                }
 
         }
         if (Gameplay.check1Player() == true) {
             System.out.println("computer wins by flip3");
             disableGameButtons();
             DrawButton.setEnabled(false);
+            textArea.setText("computer wins!");
         } else if (Gameplay.check1Computer() == true) {
             System.out.println("player wins by flip3");
             disableGameButtons();
             DrawButton.setEnabled(false);
+            textArea.setText("player wins!");
+                            try {
+                    Save.Save();
+                } catch (IOException ex) {
+                    Logger.getLogger(Gui.class.getName()).log(Level.SEVERE, null, ex);
+                }
         }
     }//GEN-LAST:event_Flip1ActionPerformed
 
@@ -463,25 +482,18 @@ public class Gui extends javax.swing.JFrame {
 
     private void ExitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ExitButtonActionPerformed
         try {
-            Save.load();
+            Save.Save();
         } catch (IOException ex) {
-            System.out.println("cats oof the loading broke :(  ");
+            Logger.getLogger(Gui.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_ExitButtonActionPerformed
 
     private void Flip2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Flip2ActionPerformed
-        String playerFilePath = "src/war4/res/" + playerRanksAL.get(playerRanksAL.size() - 1) + playerSuitsAL.get(playerSuitsAL.size() - 1) + ".png";
-        String computerFilePath = "src/war4/res/" + computerRanksAL.get(computerRanksAL.size() - 1) + computerSuitsAL.get(computerSuitsAL.size() - 1) + ".png";
-
-        RanksWarHolder.add(computerRanksAL.get(computerRanksAL.size() - 1));
-        SuitsWarHolder.add(computerSuitsAL.get(computerSuitsAL.size() - 1));
-        RanksWarHolder.add(playerRanksAL.get(playerRanksAL.size() - 1));
-        SuitsWarHolder.add(playerSuitsAL.get(playerSuitsAL.size() - 1));
-
-        playerRanksAL.remove(playerRanksAL.size() - 1);
-        playerSuitsAL.remove(playerSuitsAL.size() - 1);
-        computerRanksAL.remove(computerRanksAL.size() - 1);
-        computerSuitsAL.remove(computerSuitsAL.size() - 1);
+                    String playerFilePath = "src/war4/res/" + playerRanksAL.get(playerRanksAL.size() - 1) + playerSuitsAL.get(playerSuitsAL.size() - 1) + ".png";
+    String computerFilePath = "src/war4/res/" + computerRanksAL.get(computerRanksAL.size() - 1) + computerSuitsAL.get(computerSuitsAL.size() - 1) + ".png";
+        
+        addToHolderArray();
+        removeFromMainArray();
         counter++;
         ImageIcon playerIcon = new ImageIcon(playerFilePath);
         ImageIcon computerIcon = new ImageIcon(computerFilePath);
@@ -493,37 +505,44 @@ public class Gui extends javax.swing.JFrame {
         if (Gameplay.check0Player() == true) {
             System.out.println("computer wins by flip3");
             DrawButton.setEnabled(false);
+            textArea.setText("computer wins!");
             disableGameButtons();
         } else if (Gameplay.check0Computer() == true) {
             System.out.println("player wins by flip3");
+            textArea.setText("player wins!");
             DrawButton.setEnabled(false);
             disableGameButtons();
+                            try {
+                    Save.Save();
+                } catch (IOException ex) {
+                    Logger.getLogger(Gui.class.getName()).log(Level.SEVERE, null, ex);
+                }
         }
         if (Gameplay.check1Player() == true) {
             System.out.println("computer wins by flip3");
             DrawButton.setEnabled(false);
             disableGameButtons();
+            textArea.setText("computer wins!");
         } else if (Gameplay.check1Computer() == true) {
             System.out.println("player wins by flip3");
             DrawButton.setEnabled(false);
             disableGameButtons();
+            textArea.setText("player wins!");
+                            try {
+                    Save.Save();
+                } catch (IOException ex) {
+                    Logger.getLogger(Gui.class.getName()).log(Level.SEVERE, null, ex);
+                }
         }
 
     }//GEN-LAST:event_Flip2ActionPerformed
 
     private void Flip3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Flip3ActionPerformed
-        String playerFilePath = "src/war4/res/" + playerRanksAL.get(playerRanksAL.size() - 1) + playerSuitsAL.get(playerSuitsAL.size() - 1) + ".png";
-        String computerFilePath = "src/war4/res/" + computerRanksAL.get(computerRanksAL.size() - 1) + computerSuitsAL.get(computerSuitsAL.size() - 1) + ".png";
+            String playerFilePath = "src/war4/res/" + playerRanksAL.get(playerRanksAL.size() - 1) + playerSuitsAL.get(playerSuitsAL.size() - 1) + ".png";
+    String computerFilePath = "src/war4/res/" + computerRanksAL.get(computerRanksAL.size() - 1) + computerSuitsAL.get(computerSuitsAL.size() - 1) + ".png";
+        addToHolderArray();
+        removeFromMainArray();
 
-        RanksWarHolder.add(computerRanksAL.get(computerRanksAL.size() - 1));
-        SuitsWarHolder.add(computerSuitsAL.get(computerSuitsAL.size() - 1));
-        RanksWarHolder.add(playerRanksAL.get(playerRanksAL.size() - 1));
-        SuitsWarHolder.add(playerSuitsAL.get(playerSuitsAL.size() - 1));
-
-        playerRanksAL.remove(playerRanksAL.size() - 1);
-        playerSuitsAL.remove(playerSuitsAL.size() - 1);
-        computerRanksAL.remove(computerRanksAL.size() - 1);
-        computerSuitsAL.remove(computerSuitsAL.size() - 1);
         ImageIcon playerIcon = new ImageIcon(playerFilePath);
         ImageIcon computerIcon = new ImageIcon(computerFilePath);
         playerCard3.setIcon(playerIcon);
@@ -536,19 +555,33 @@ public class Gui extends javax.swing.JFrame {
             System.out.println("computer wins by flip3");
             DrawButton.setEnabled(false);
             disableGameButtons();
+            textArea.setText("computer wins!");
         } else if (Gameplay.check0Computer() == true) {
             System.out.println("player wins by flip3");
             DrawButton.setEnabled(false);
             disableGameButtons();
+            textArea.setText("player wins!");
+                            try {
+                    Save.Save();
+                } catch (IOException ex) {
+                    Logger.getLogger(Gui.class.getName()).log(Level.SEVERE, null, ex);
+                }
         }
         if (Gameplay.check1Player() == true) {
             System.out.println("computer wins by flip3");
             DrawButton.setEnabled(false);
             disableGameButtons();
+            textArea.setText("computer wins!");
         } else if (Gameplay.check1Computer() == true) {
             System.out.println("player wins by flip3");
             DrawButton.setEnabled(false);
             disableGameButtons();
+            textArea.setText("player wins!");
+                            try {
+                    Save.Save();
+                } catch (IOException ex) {
+                    Logger.getLogger(Gui.class.getName()).log(Level.SEVERE, null, ex);
+                }
         }
 
         counter++;
@@ -556,20 +589,13 @@ public class Gui extends javax.swing.JFrame {
     }//GEN-LAST:event_Flip3ActionPerformed
 
     private void Flip4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Flip4ActionPerformed
-        String playerFilePath = "src/war4/res/" + playerRanksAL.get(playerRanksAL.size() - 1) + playerSuitsAL.get(playerSuitsAL.size() - 1) + ".png";
-        String computerFilePath = "src/war4/res/" + computerRanksAL.get(computerRanksAL.size() - 1) + computerSuitsAL.get(computerSuitsAL.size() - 1) + ".png";
-
-        RanksWarHolder.add(computerRanksAL.get(computerRanksAL.size() - 1));
-        SuitsWarHolder.add(computerSuitsAL.get(computerSuitsAL.size() - 1));
-        RanksWarHolder.add(playerRanksAL.get(playerRanksAL.size() - 1));
-        SuitsWarHolder.add(playerSuitsAL.get(playerSuitsAL.size() - 1));
+            String playerFilePath = "src/war4/res/" + playerRanksAL.get(playerRanksAL.size() - 1) + playerSuitsAL.get(playerSuitsAL.size() - 1) + ".png";
+    String computerFilePath = "src/war4/res/" + computerRanksAL.get(computerRanksAL.size() - 1) + computerSuitsAL.get(computerSuitsAL.size() - 1) + ".png";
+        addToHolderArray();
         System.out.println("RanksWarHolder: " + RanksWarHolder);
         System.out.println("SuitsWarHolder: " + SuitsWarHolder);
         Gameplay.war();
-        playerRanksAL.remove(playerRanksAL.size() - 1);
-        playerSuitsAL.remove(playerSuitsAL.size() - 1);
-        computerRanksAL.remove(computerRanksAL.size() - 1);
-        computerSuitsAL.remove(computerSuitsAL.size() - 1);
+        removeFromMainArray();
 
         ImageIcon playerIcon = new ImageIcon(playerFilePath);
         ImageIcon computerIcon = new ImageIcon(computerFilePath);
@@ -590,18 +616,28 @@ public class Gui extends javax.swing.JFrame {
             System.out.println("player wins by flip4");
             DrawButton.setEnabled(false);
             textArea.setText("player wins by flip4");
+           
+                try {
+                    Save.Save();
+                } catch (IOException ex) {
+                    Logger.getLogger(Gui.class.getName()).log(Level.SEVERE, null, ex);
+                }
             disableGameButtons();
-        } else if (distribution == 0) {
+        }
+        if (distribution == 0) {
             textArea.setText("All 10 cards go to the player");
-        } else if (distribution == 1) {
+            System.out.println("distribution = " + distribution);
+        }
+        if (distribution == 1) {
             textArea.setText("All 10 cards go to the computer");
+            System.out.println("distribution = " + distribution);
         }
         iteration = true;
 
     }//GEN-LAST:event_Flip4ActionPerformed
 
     private void SaveScoreButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SaveScoreButtonActionPerformed
-        Save.displaySaveInfo();
+        Save.displayLeaderboard();
     }//GEN-LAST:event_SaveScoreButtonActionPerformed
 
     /**
@@ -638,12 +674,31 @@ public class Gui extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new Gui().setVisible(true);
+                try {
+                    Save.load();
+                } catch (IOException ex) {
+                    Logger.getLogger(Gui.class.getName()).log(Level.SEVERE, null, ex);
+                }
                 GameSetup.initialize();
                 GameSetup.shuffleDeck();
                 System.out.println("Drawingthing:" + Gameplay.playerComp());
 
             }
         });
+    }
+
+    private void addToHolderArray() {
+        RanksWarHolder.add(computerRanksAL.get(computerRanksAL.size() - 1));
+        SuitsWarHolder.add(computerSuitsAL.get(computerSuitsAL.size() - 1));
+        RanksWarHolder.add(playerRanksAL.get(playerRanksAL.size() - 1));
+        SuitsWarHolder.add(playerSuitsAL.get(playerSuitsAL.size() - 1));
+    }
+
+    private void removeFromMainArray() {
+        playerRanksAL.remove(playerRanksAL.size() - 1);
+        playerSuitsAL.remove(playerSuitsAL.size() - 1);
+        computerRanksAL.remove(computerRanksAL.size() - 1);
+        computerSuitsAL.remove(computerSuitsAL.size() - 1);
     }
 
     private void updateScores() {

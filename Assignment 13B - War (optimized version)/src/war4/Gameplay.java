@@ -48,7 +48,7 @@ public class Gameplay extends Gui {
             computerRanksAL.remove(computerLastCard);
             computerSuitsAL.remove(computerLastCard);
             GameSetup.shuffleDeck();
-            returnHolder = 1;
+            returnHolder = 0;//if player card
         } else if (playerIntHolder < computerIntHolder) {
             System.out.println("Computer card is bigger");
             Collections.addAll(computerRanksAL, playerRanksAL.get(playerLastCard));
@@ -56,7 +56,7 @@ public class Gameplay extends Gui {
             playerRanksAL.remove(playerLastCard);
             playerSuitsAL.remove(playerLastCard);
             GameSetup.shuffleDeck();
-                        returnHolder = 0;
+            returnHolder = 1;
         } else if (playerIntHolder == computerIntHolder) {
 
             System.out.println("war");
