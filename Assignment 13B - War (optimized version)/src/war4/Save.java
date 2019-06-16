@@ -40,14 +40,14 @@ public class Save extends Gameplay {
             }
 
         } catch (IOException exception) {
-            System.out.println("oof - file loading");
+        JOptionPane.showMessageDialog(null, "There has been a problem loading the scores");
         }
 
     }
 
     public static void displayLeaderboard() {
         JOptionPane.showMessageDialog(null, data);
-        System.out.println(data);
+
     }
 
     public static void Save() throws IOException {
@@ -70,14 +70,13 @@ public class Save extends Gameplay {
             }
             scoreWriter.write(scoreHold);
             nameWriter.write(nameHold);
-            System.out.println(scoreHold);
-            System.out.println(nameHold);
+
             scoreWriter.close();
             nameWriter.close();
 
             JOptionPane.showMessageDialog(null, "High score successfully saved");
         } catch (IOException exception) {
-            System.out.println("oof - file saving");
+
 
         }
 
