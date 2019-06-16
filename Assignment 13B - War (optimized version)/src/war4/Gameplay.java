@@ -64,7 +64,7 @@ public class Gameplay extends Gui {
             returnHolder = -1;
 
         }
-return returnHolder;
+        return returnHolder;
     }
 
     public static void war() {
@@ -77,7 +77,7 @@ return returnHolder;
             playerSuitsAL.addAll(SuitsWarHolder);
             RanksWarHolder.clear();
             SuitsWarHolder.clear();
-
+            distribution = 0;
         } else if (Integer.parseInt(playerRanksAL.get(playerRanksAL.size() - 1)) < Integer.parseInt(computerRanksAL.get(computerRanksAL.size() - 1))) {
             System.out.println("computer win");
             System.out.println("player put down: " + Integer.parseInt(playerRanksAL.get(playerRanksAL.size() - 1)));
@@ -86,6 +86,7 @@ return returnHolder;
             computerSuitsAL.addAll(SuitsWarHolder);
             RanksWarHolder.clear();
             SuitsWarHolder.clear();
+            distribution = 1;
         } else if (Integer.parseInt(playerRanksAL.get(playerRanksAL.size() - 1)) == Integer.parseInt(computerRanksAL.get(computerRanksAL.size() - 1))) {
             System.out.println("wtf a war tie");
             System.out.println("player put down: " + Integer.parseInt(playerRanksAL.get(playerRanksAL.size() - 1)));

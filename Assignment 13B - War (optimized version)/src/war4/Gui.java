@@ -481,11 +481,7 @@ public class Gui extends javax.swing.JFrame {
     }//GEN-LAST:event_InstructionsButtonActionPerformed
 
     private void ExitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ExitButtonActionPerformed
-        try {
-            Save.Save();
-        } catch (IOException ex) {
-            Logger.getLogger(Gui.class.getName()).log(Level.SEVERE, null, ex);
-        }
+System.exit (0);
     }//GEN-LAST:event_ExitButtonActionPerformed
 
     private void Flip2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Flip2ActionPerformed
@@ -731,6 +727,8 @@ public class Gui extends javax.swing.JFrame {
         Flip4.setEnabled(false);
     }
 
+    
+    
     public static void printStuff() {
 
         String computer = "";
