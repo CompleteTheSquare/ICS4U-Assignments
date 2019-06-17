@@ -19,19 +19,18 @@ import javax.swing.ImageIcon;
  */
 public class Gui extends javax.swing.JFrame {
 
-    public static ArrayList<String> computerRanksAL = new ArrayList<String>();
-    public static ArrayList<String> playerRanksAL = new ArrayList<String>();
-    public static ArrayList<String> computerSuitsAL = new ArrayList<String>();
-    public static ArrayList<String> playerSuitsAL = new ArrayList<String>();
+    public static ArrayList<String> computerRanksAL = new ArrayList<String>(); //array that holds the computer's current card ranks/values in an array
+    public static ArrayList<String> playerRanksAL = new ArrayList<String>();   //array that holds the player's current card ranks/values in an array
+    public static ArrayList<String> computerSuitsAL = new ArrayList<String>(); //array that holds the computer's current card suits in an array
+    public static ArrayList<String> playerSuitsAL = new ArrayList<String>();   //array that holds the player's current card suits in an array
 
-    public static ArrayList<String> RanksWarHolder = new ArrayList<String>();
-    public static ArrayList<String> SuitsWarHolder = new ArrayList<String>();
-    public static int distribution;
+    public static ArrayList<String> RanksWarHolder = new ArrayList<String>();  //array that holds the ranks of the cards in a war
+    public static ArrayList<String> SuitsWarHolder = new ArrayList<String>();  //array that holds the suits of the cards in a war
+    public static int distribution; //randomly generated number that distributes cards to a random player if a war happens within a war
 
-    public static int counter = 0;
-    private static boolean iteration = false;
-
-    public static int disableDraw0 = 0;
+    public static int counter = 0;//a counter that raises by 1 everytime the player flips a card (including wars). Number of flips is the score (lower score is better).
+    private static boolean iteration = false; //this makes sure that the cards are flipped and the backings are shown after a war happens
+    public static int disableDraw = 0;// this checks if there is a war or not (0 is no war, 1 means war)
 
     public Gui() {
         initComponents();
@@ -250,12 +249,15 @@ public class Gui extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(ExitButton)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(GiveUpButton)
-                            .addComponent(InstructionsButton))
-                        .addGap(74, 74, 74)
-                        .addComponent(scoreLabel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(GiveUpButton)
+                                    .addComponent(InstructionsButton))
+                                .addGap(111, 111, 111))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(scoreLabel)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(computerNumberCards)
                             .addComponent(playerNumberCards)))
@@ -301,7 +303,7 @@ public class Gui extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(computerCard4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(19, 19, 19)
@@ -325,18 +327,15 @@ public class Gui extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(scoreLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(120, 120, 120))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(InstructionsButton)
-                                .addGap(18, 18, 18)
-                                .addComponent(GiveUpButton)
-                                .addGap(18, 18, 18)
-                                .addComponent(SaveScoreButton)
-                                .addGap(24, 24, 24)
-                                .addComponent(ExitButton))))
+                        .addComponent(scoreLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(39, 39, 39)
+                        .addComponent(InstructionsButton)
+                        .addGap(18, 18, 18)
+                        .addComponent(GiveUpButton)
+                        .addGap(18, 18, 18)
+                        .addComponent(SaveScoreButton)
+                        .addGap(24, 24, 24)
+                        .addComponent(ExitButton))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(computerCard0, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
@@ -355,34 +354,26 @@ public class Gui extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-
+    /**
+     * @param args the command line arguments
+     */
     private void DrawButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DrawButtonActionPerformed
-
-        String playerFilePath = "src/war4/res/" + playerRanksAL.get(playerRanksAL.size() - 1) + playerSuitsAL.get(playerSuitsAL.size() - 1) + ".png";
-        String computerFilePath = "src/war4/res/" + computerRanksAL.get(computerRanksAL.size() - 1) + computerSuitsAL.get(computerSuitsAL.size() - 1) + ".png";
         if (iteration == true) {
-            setBacking();
+            setBacking();//sets card backing after war
         }
-
-        ImageIcon playerIcon = new ImageIcon(playerFilePath);
-        ImageIcon computerIcon = new ImageIcon(computerFilePath);
-        playerCard0.setIcon(playerIcon);
-        computerCard0.setIcon(computerIcon);
-        int holder = Gameplay.compareValues();
-        System.out.println("disableDraw = " + disableDraw0);
-        counter++;
-        distribution = Gameplay.playerComp();
-
-        if (disableDraw0 == 1) {
-            addToHolderArray();
-            removeFromMainArray();
-            Flip1.setEnabled(true);
-            DrawButton.setEnabled(false);
-            System.out.println("disableDraw: " + disableDraw0);
-        } else if (disableDraw0 == -1) {
-            DrawButton.setEnabled(false);
+        playerCard0.setIcon(setPlayerCard()); //sets the player card image
+        computerCard0.setIcon(setComputerCard());//sets the computer card image
+        int holder = Gameplay.compareValues(); //holder variable determines what message will be outputted (0 means player wins draw, 1 means computer wins draw, -1 means war)
+        counter++;//game adds 1 to the number of flips 
+        if (disableDraw == 1) {//if there is war,
+            addToHolderArray();//the player's cards and computer's cards are added to an array temporarily
+            removeFromMainArray();//they player's cards and computer's cards are removed from the arrays 
+            Flip1.setEnabled(true);//activates button to flip the second card in war
+            DrawButton.setEnabled(false);//player can not draw anymore
+        } else if (disableDraw == -1) {//if there is a war
+            DrawButton.setEnabled(false);//player can not draw anymore
         }
-        check0cards(0);
+        check0cards(0);//checks that both players have enough cards (they do not have 0) to continue (else, forfeiture)
         if (holder == 0) {
             textArea.setText("The cards go to the player");
         } else if (holder == 1) {
@@ -390,114 +381,107 @@ public class Gui extends javax.swing.JFrame {
         } else if (holder == -1) {
             textArea.setText("War!!");
         }
-        updateScores();
+        updateScores();//update the scores of the game
     }//GEN-LAST:event_DrawButtonActionPerformed
 
+    /**
+     * @param args the command line arguments
+     */
     private void Flip1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Flip1ActionPerformed
-        String playerFilePath = "src/war4/res/" + playerRanksAL.get(playerRanksAL.size() - 1) + playerSuitsAL.get(playerSuitsAL.size() - 1) + ".png";
-        String computerFilePath = "src/war4/res/" + computerRanksAL.get(computerRanksAL.size() - 1) + computerSuitsAL.get(computerSuitsAL.size() - 1) + ".png";
-        ImageIcon playerIcon = new ImageIcon(playerFilePath);
-        ImageIcon computerIcon = new ImageIcon(computerFilePath);
-        playerCard1.setIcon(playerIcon);
-        computerCard1.setIcon(computerIcon);
-
-        counter++;
-        addToHolderArray();
-        removeFromMainArray();
+        playerCard1.setIcon(setPlayerCard());//sets the player card image
+        computerCard1.setIcon(setComputerCard());//sets the computer card image
+        counter++;//game adds 1 to the number of flips 
+        addToHolderArray();//the player's cards and computer's cards are added to an array temporarily
+        removeFromMainArray();//they player's cards and computer's cards are removed from the arrays 
         Flip1.setEnabled(false);
         Flip2.setEnabled(true);
-        updateScores();
-        check0cards(0);
-        check1cards();
+        updateScores();//update the scores of the game
+        check0cards(0);//checks that both players have enough cards (they do not have 0) to continue (else, forfeiture)
+        check1cards();//checks that both players have enough cards (they do not have 1) to continue (else, forfeiture)
     }//GEN-LAST:event_Flip1ActionPerformed
 
+    /**
+     * @param args the command line arguments
+     */
     private void GiveUpButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GiveUpButtonActionPerformed
         DrawButton.setEnabled(false);
         Flip1.setEnabled(false);
         Flip2.setEnabled(false);
         Flip3.setEnabled(false);
         Flip4.setEnabled(false);
-        textArea.setText("you have forfeited the game lol");
-
+        textArea.setText("you have forfeited the game");
     }//GEN-LAST:event_GiveUpButtonActionPerformed
 
+    /**
+     * @param args the command line arguments
+     */
     private void InstructionsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InstructionsButtonActionPerformed
         Instructions.displayInformation();
     }//GEN-LAST:event_InstructionsButtonActionPerformed
 
+    /**
+     * @param args the command line arguments
+     */
     private void ExitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ExitButtonActionPerformed
         System.exit(0);
     }//GEN-LAST:event_ExitButtonActionPerformed
 
+    /**
+     * @param args the command line arguments
+     */
     private void Flip2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Flip2ActionPerformed
-        String playerFilePath = "src/war4/res/" + playerRanksAL.get(playerRanksAL.size() - 1) + playerSuitsAL.get(playerSuitsAL.size() - 1) + ".png";
-        String computerFilePath = "src/war4/res/" + computerRanksAL.get(computerRanksAL.size() - 1) + computerSuitsAL.get(computerSuitsAL.size() - 1) + ".png";
-
-        addToHolderArray();
-        removeFromMainArray();
-        counter++;
-        ImageIcon playerIcon = new ImageIcon(playerFilePath);
-        ImageIcon computerIcon = new ImageIcon(computerFilePath);
-        playerCard2.setIcon(playerIcon);
-        computerCard2.setIcon(computerIcon);
+        playerCard2.setIcon(setPlayerCard());//sets the player card image
+        computerCard2.setIcon(setComputerCard());//sets the computer card image
+        addToHolderArray();//the player's cards and computer's cards are added to an array temporarily
+        removeFromMainArray();//they player's cards and computer's cards are removed from the arrays 
+        counter++;//game adds 1 to the number of flips 
         Flip2.setEnabled(false);
         Flip3.setEnabled(true);
-        updateScores();
-        check0cards(0);
-        check1cards();
-
+        updateScores();//update the scores of the game
+        check0cards(0);//checks that both players have enough cards (they do not have 0) to continue (else, forfeiture)
+        check1cards();//checks that both players have enough cards (they do not have 1) to continue (else, forfeiture)
     }//GEN-LAST:event_Flip2ActionPerformed
 
+    /**
+     * @param args the command line arguments
+     */
     private void Flip3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Flip3ActionPerformed
-        String playerFilePath = "src/war4/res/" + playerRanksAL.get(playerRanksAL.size() - 1) + playerSuitsAL.get(playerSuitsAL.size() - 1) + ".png";
-        String computerFilePath = "src/war4/res/" + computerRanksAL.get(computerRanksAL.size() - 1) + computerSuitsAL.get(computerSuitsAL.size() - 1) + ".png";
-        addToHolderArray();
-        removeFromMainArray();
-
-        ImageIcon playerIcon = new ImageIcon(playerFilePath);
-        ImageIcon computerIcon = new ImageIcon(computerFilePath);
-        playerCard3.setIcon(playerIcon);
-        computerCard3.setIcon(computerIcon);
+        playerCard3.setIcon(setPlayerCard());//sets the player card image
+        computerCard3.setIcon(setComputerCard());//sets the computer card image
+        addToHolderArray();//the player's cards and computer's cards are added to an array temporarily
+        removeFromMainArray();//they player's cards and computer's cards are removed from the arrays 
         Flip3.setEnabled(false);
         Flip4.setEnabled(true);
-        updateScores();
-
-        check0cards(0);
-        check1cards();
-
-        counter++;
-
+        updateScores();//update the scores of the game
+        check0cards(0);//checks that both players have enough cards (they do not have 0) to continue (else, forfeiture)
+        check1cards();//checks that both players have enough cards (they do not have 1) to continue (else, forfeiture)
+        counter++;//game adds 1 to the number of flips 
     }//GEN-LAST:event_Flip3ActionPerformed
 
+    /**
+     * @param args the command line arguments
+     */
     private void Flip4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Flip4ActionPerformed
-        String playerFilePath = "src/war4/res/" + playerRanksAL.get(playerRanksAL.size() - 1) + playerSuitsAL.get(playerSuitsAL.size() - 1) + ".png";
-        String computerFilePath = "src/war4/res/" + computerRanksAL.get(computerRanksAL.size() - 1) + computerSuitsAL.get(computerSuitsAL.size() - 1) + ".png";
-        addToHolderArray();
-        Gameplay.war();
-        removeFromMainArray();
-        ImageIcon playerIcon = new ImageIcon(playerFilePath);
-        ImageIcon computerIcon = new ImageIcon(computerFilePath);
-
-        playerCard4.setIcon(playerIcon);
-        computerCard4.setIcon(computerIcon);
+        playerCard4.setIcon(setPlayerCard());//sets the player card image
+        computerCard4.setIcon(setComputerCard());//sets the computer card image
+        addToHolderArray();//the player's cards and computer's cards are added to an array temporarily
+        Gameplay.war();//does the War method
+        removeFromMainArray();//they player's cards and computer's cards are removed from the arrays 
         Flip4.setEnabled(false);
-        updateScores();
+        updateScores();//update the scores of the game
         DrawButton.setEnabled(true);
-        disableDraw0 = 0;
-        counter++;
-        check0cards(1);
-        if (distribution == 0) {
-            textArea.setText("All 10 cards go to the player");
-        }
-        if (distribution == 1) {
-            textArea.setText("All 10 cards go to the computer");
-        }
-        iteration = true;
-
+        disableDraw = 0;//resets it so that there is no more war
+        counter++;//game adds 1 to the number of flips 
+        check0cards(1);//checks that both players have enough cards (they do not have 0) to continue (else, forfeiture)
+        distribution();//distibute all 10 cards to either the player or the computer (randomly chose who receives cards)
+        iteration = true;//makes sure that card backings are showing after war
     }//GEN-LAST:event_Flip4ActionPerformed
 
+    /**
+     * @param args the command line arguments
+     */
     private void SaveScoreButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SaveScoreButtonActionPerformed
-        Save.displayLeaderboard();
+        Save.displayLeaderboard();//displays leaderboard dialog
     }//GEN-LAST:event_SaveScoreButtonActionPerformed
 
     /**
@@ -545,6 +529,40 @@ public class Gui extends javax.swing.JFrame {
         });
     }
 
+    /**
+     * @param args the command line arguments
+     */
+    private ImageIcon setPlayerCard() {
+        String playerFilePath = "src/war4/res/" + playerRanksAL.get(playerRanksAL.size() - 1) + playerSuitsAL.get(playerSuitsAL.size() - 1) + ".png";
+        ImageIcon playerIcon = new ImageIcon(playerFilePath);
+        return playerIcon;
+    }
+
+    /**
+     * @param args the command line arguments
+     */
+    private ImageIcon setComputerCard() {
+        String computerFilePath = "src/war4/res/" + computerRanksAL.get(computerRanksAL.size() - 1) + computerSuitsAL.get(computerSuitsAL.size() - 1) + ".png";
+        ImageIcon computerIcon = new ImageIcon(computerFilePath);
+        return computerIcon;
+    }
+
+    /**
+     * @param args the command line arguments
+     */
+    private void distribution() {
+        distribution = Gameplay.playerComp();
+        if (distribution == 0) {
+            textArea.setText("All 10 cards go to the player");
+        }
+        if (distribution == 1) {
+            textArea.setText("All 10 cards go to the computer");
+        }
+    }
+
+    /**
+     * @param args the command line arguments
+     */
     private void addToHolderArray() {
         RanksWarHolder.add(computerRanksAL.get(computerRanksAL.size() - 1));
         SuitsWarHolder.add(computerSuitsAL.get(computerSuitsAL.size() - 1));
@@ -552,6 +570,9 @@ public class Gui extends javax.swing.JFrame {
         SuitsWarHolder.add(playerSuitsAL.get(playerSuitsAL.size() - 1));
     }
 
+    /**
+     * @param args the command line arguments
+     */
     private void removeFromMainArray() {
         playerRanksAL.remove(playerRanksAL.size() - 1);
         playerSuitsAL.remove(playerSuitsAL.size() - 1);
@@ -559,13 +580,18 @@ public class Gui extends javax.swing.JFrame {
         computerSuitsAL.remove(computerSuitsAL.size() - 1);
     }
 
+    /**
+     * @param args the command line arguments
+     */
     private void updateScores() {
         playerNumberCards.setText(Integer.toString(playerRanksAL.size()));
         computerNumberCards.setText(Integer.toString(computerRanksAL.size()));
-        scoreLabel.setText(Integer.toString(computerRanksAL.size() + playerRanksAL.size()));
 
     }
 
+    /**
+     * @param args the command line arguments
+     */
     private void setBacking() {
         String cardBacking = "src/war4/backing.png";
         ImageIcon cardBackingIcon = new ImageIcon(cardBacking);
@@ -581,6 +607,9 @@ public class Gui extends javax.swing.JFrame {
         computerCard4.setIcon(cardBackingIcon);
     }
 
+    /**
+     * @param args the command line arguments
+     */
     private void disableGameButtons() {
         DrawButton.setEnabled(false);
         Flip1.setEnabled(false);
@@ -589,15 +618,18 @@ public class Gui extends javax.swing.JFrame {
         Flip4.setEnabled(false);
     }
 
+    /**
+     * @param args the command line arguments
+     */
     private void check0cards(int holder) {
-        if (playerRanksAL.size() == 0) {
+        if (playerRanksAL.size() == 0) {//if the computer has no cards left, player wins (impossible for computer to win war)
             disableGameButtons();
-            textArea.setText("computer wins!");
-        } else if (computerRanksAL.size() == 0) {
+            textArea.setText("computer wins!");//display message 
+        } else if (computerRanksAL.size() == 0) {//if the computer has no cards left, player wins (impossible for computer to win war)
             disableGameButtons();
-            textArea.setText("player wins!");
+            textArea.setText("player wins!");//display message 
             try {
-                Save.Save();
+                Save.Save();//if player wins, bring up the save dialog box
             } catch (IOException ex) {
                 Logger.getLogger(Gui.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -607,20 +639,22 @@ public class Gui extends javax.swing.JFrame {
         }
     }
 
+    /**
+     * @param args the command line arguments
+     */
     private void check1cards() {
-        if (playerRanksAL.size() == 1) {
+        if (playerRanksAL.size() == 1) {//if the player has 1 last card, computer wins (impossible for player to win war)
             disableGameButtons();
-            textArea.setText("computer wins!");
-        } else if (computerRanksAL.size() == 1) {
+            textArea.setText("computer wins!");//display message 
+        } else if (computerRanksAL.size() == 1) {//if the computer has 1 last card, player wins (impossible for computer to win war)
             disableGameButtons();
-            textArea.setText("player wins!");
+            textArea.setText("player wins!");//display message 
             try {
-                Save.Save();
+                Save.Save();//if player wins, bring up the save dialog box
             } catch (IOException ex) {
                 Logger.getLogger(Gui.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-
     }
 
 

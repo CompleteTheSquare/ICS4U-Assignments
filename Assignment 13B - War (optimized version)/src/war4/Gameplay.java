@@ -32,7 +32,6 @@ public class Gameplay extends Gui {
         int playerIntHolder = Integer.parseInt(pStringHolder);
         int computerIntHolder = Integer.parseInt(cStringHolder);
 
-
         //if player card is bigger, add last card from their deck as the last card of the player deck.
         if (playerIntHolder > computerIntHolder) {
             Collections.addAll(playerRanksAL, computerRanksAL.get(computerLastCard));
@@ -49,7 +48,7 @@ public class Gameplay extends Gui {
             GameSetup.shuffleDeck();
             returnHolder = 1;
         } else if (playerIntHolder == computerIntHolder) {
-            disableDraw0 = 1;
+            disableDraw = 1;
             returnHolder = -1;
 
         }
@@ -59,29 +58,16 @@ public class Gameplay extends Gui {
     public static void war() {
         //player win
         if (Integer.parseInt(playerRanksAL.get(playerRanksAL.size() - 1)) > Integer.parseInt(computerRanksAL.get(computerRanksAL.size() - 1))) {
-            playerRanksAL.addAll(RanksWarHolder);
-            playerSuitsAL.addAll(SuitsWarHolder);
-            RanksWarHolder.clear();
-            SuitsWarHolder.clear();
+            addPlayerClear();
             distribution = 0;
         } else if (Integer.parseInt(playerRanksAL.get(playerRanksAL.size() - 1)) < Integer.parseInt(computerRanksAL.get(computerRanksAL.size() - 1))) {
-
-            computerRanksAL.addAll(RanksWarHolder);
-            computerSuitsAL.addAll(SuitsWarHolder);
-            RanksWarHolder.clear();
-            SuitsWarHolder.clear();
+            addCompClear();
             distribution = 1;
         } else if (Integer.parseInt(playerRanksAL.get(playerRanksAL.size() - 1)) == Integer.parseInt(computerRanksAL.get(computerRanksAL.size() - 1))) {
             if (distribution == 0) {
-                playerRanksAL.addAll(RanksWarHolder);
-                playerSuitsAL.addAll(SuitsWarHolder);
-                RanksWarHolder.clear();
-                SuitsWarHolder.clear();
+                addPlayerClear();
             } else {
-                computerRanksAL.addAll(RanksWarHolder);
-                computerSuitsAL.addAll(SuitsWarHolder);
-                RanksWarHolder.clear();
-                SuitsWarHolder.clear();
+                addCompClear();
             }
         }
 
@@ -93,5 +79,19 @@ public class Gameplay extends Gui {
         return number;
     }
 
+    private static void addCompClear() {
+        computerRanksAL.addAll(RanksWarHolder);
+        computerSuitsAL.addAll(SuitsWarHolder);
+        RanksWarHolder.clear();
+        SuitsWarHolder.clear();
+
+    }
+
+    private static void addPlayerClear() {
+        playerRanksAL.addAll(RanksWarHolder);
+        playerSuitsAL.addAll(SuitsWarHolder);
+        RanksWarHolder.clear();
+        SuitsWarHolder.clear();
+    }
 
 }
