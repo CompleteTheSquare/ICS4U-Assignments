@@ -355,7 +355,7 @@ public class Gui extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     /**
-     * @param args the command line arguments
+     * @param 
      */
     private void DrawButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DrawButtonActionPerformed
         if (iteration == true) {
@@ -363,8 +363,8 @@ public class Gui extends javax.swing.JFrame {
         }
         playerCard0.setIcon(setPlayerCard()); //sets the player card image
         computerCard0.setIcon(setComputerCard());//sets the computer card image
+                counter++;//game adds 1 to the number of flips 
         int holder = Gameplay.compareValues(); //holder variable determines what message will be outputted (0 means player wins draw, 1 means computer wins draw, -1 means war)
-        counter++;//game adds 1 to the number of flips 
         if (disableDraw == 1) {//if there is war,
             addToHolderArray();//the player's cards and computer's cards are added to an array temporarily
             removeFromMainArray();//they player's cards and computer's cards are removed from the arrays 
