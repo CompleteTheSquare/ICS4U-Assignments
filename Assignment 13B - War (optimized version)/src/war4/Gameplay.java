@@ -13,7 +13,7 @@ public class Gameplay extends Gui {
      * Whoever has the highest card gets the 2 cards and the deck is
      * re-shuffled.
      */
-    protected static int compareValues() {
+    public static int compareValues() {
         int returnHolder = 0;// this integer holds a value: 0 means player wins draw, 1 means computer wins draw, -1 means there is war 
         int playerLastCard = playerRanksAL.size() - 1;//the last card in player deck
         int computerLastCard = computerRanksAL.size() - 1;// the last card in the computer deck
@@ -62,13 +62,13 @@ public class Gameplay extends Gui {
             distribution = 0;//need these to set message for display panel
             //if computer's card is highest, all cards go to the computer
         } else if (Integer.parseInt(playerRanksAL.get(playerRanksAL.size() - 1)) < Integer.parseInt(computerRanksAL.get(computerRanksAL.size() - 1))) {
-            addCompClear();
+            addComputerClear();
             distribution = 1;//need this to set message for display panel
         } else if (Integer.parseInt(playerRanksAL.get(playerRanksAL.size() - 1)) == Integer.parseInt(computerRanksAL.get(computerRanksAL.size() - 1))) {
             if (distribution == 0) { //in a war, the distribution variable holds a randomly generated number, either 0 (player gets all cards) or 1 (computer gets all cards)
                 addPlayerClear(); //give cards to the player and clear the holding array
             } else {
-                addCompClear(); //give cards to the computer and clear the holding array
+                addComputerClear(); //give cards to the computer and clear the holding array
             }
         }
 
@@ -87,7 +87,7 @@ public class Gameplay extends Gui {
      * This method adds the cards on the field in a war to the computer's hand
      * (cards get to the hand, and are removed from the field)
      */
-    private static void addCompClear() {
+    private static void addComputerClear() {
         computerRanksAL.addAll(RanksWarHolder);
         computerSuitsAL.addAll(SuitsWarHolder);
         RanksWarHolder.clear();
@@ -105,5 +105,7 @@ public class Gameplay extends Gui {
         RanksWarHolder.clear();
         SuitsWarHolder.clear();
     }
+
+    
 
 }

@@ -20,7 +20,9 @@ public class Save extends Gameplay {
     static ArrayList<String> name = new ArrayList<String>();
     static String data = "";
 
-    //reads in information
+    /**
+     * This method takes reads in the data from the game file and puts it on the leaderboard
+     */
     public static void load() throws IOException {
         int count = 0;
         try {
@@ -49,7 +51,9 @@ public class Save extends Gameplay {
         JOptionPane.showMessageDialog(null, data);
 
     }
-
+   /**
+     * This method saves the current information (when the player wins, their info is added)
+     */
     public static void Save() throws IOException {
         String holder = JOptionPane.showInputDialog(null, "You have won the game! What is your name?");
         name.add(holder);

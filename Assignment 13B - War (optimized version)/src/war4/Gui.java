@@ -1,22 +1,15 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package war4;
 
+import java.awt.Frame;
 import java.io.IOException;
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.scene.paint.Color;
 import javax.swing.ImageIcon;
 
-/**
- *
- * @author Sterling
- */
 public class Gui extends javax.swing.JFrame {
 
     public static ArrayList<String> computerRanksAL = new ArrayList<String>(); //array that holds the computer's current card ranks/values in an array
@@ -34,6 +27,7 @@ public class Gui extends javax.swing.JFrame {
 
     public Gui() {
         initComponents();
+        getContentPane().setBackground(new java.awt.Color(21, 104, 38));
     }
 
     /**
@@ -83,6 +77,8 @@ public class Gui extends javax.swing.JFrame {
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Frame");
+        setBackground(new java.awt.Color(0, 102, 0));
         setMinimumSize(new java.awt.Dimension(1290, 722));
         setResizable(false);
 
@@ -177,10 +173,16 @@ public class Gui extends javax.swing.JFrame {
             }
         });
 
-        scoreLabel.setText("Score:");
+        scoreLabel.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        scoreLabel.setForeground(new java.awt.Color(255, 255, 255));
+        scoreLabel.setText("Number of Cards");
 
+        computerNumberCards.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        computerNumberCards.setForeground(new java.awt.Color(255, 255, 255));
         computerNumberCards.setText("26");
 
+        playerNumberCards.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        playerNumberCards.setForeground(new java.awt.Color(255, 255, 255));
         playerNumberCards.setText("26");
 
         Flip2.setText("Flip second card");
@@ -223,7 +225,7 @@ public class Gui extends javax.swing.JFrame {
 
         textArea.setEditable(false);
         textArea.setColumns(20);
-        textArea.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        textArea.setFont(new java.awt.Font("Calibri", 0, 16)); // NOI18N
         textArea.setLineWrap(true);
         textArea.setRows(5);
         textArea.setText("Welcome to the card game War.");
@@ -249,20 +251,16 @@ public class Gui extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(ExitButton)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(GiveUpButton)
-                                    .addComponent(InstructionsButton))
-                                .addGap(111, 111, 111))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(scoreLabel)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                        .addGap(113, 113, 113)
+                        .addComponent(scoreLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(computerNumberCards)
                             .addComponent(playerNumberCards)))
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(SaveScoreButton))
+                    .addComponent(SaveScoreButton)
+                    .addComponent(GiveUpButton)
+                    .addComponent(InstructionsButton))
                 .addGap(25, 25, 25)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -328,13 +326,13 @@ public class Gui extends javax.swing.JFrame {
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(scoreLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(39, 39, 39)
+                        .addGap(61, 61, 61)
                         .addComponent(InstructionsButton)
+                        .addGap(18, 18, 18)
+                        .addComponent(SaveScoreButton)
                         .addGap(18, 18, 18)
                         .addComponent(GiveUpButton)
                         .addGap(18, 18, 18)
-                        .addComponent(SaveScoreButton)
-                        .addGap(24, 24, 24)
                         .addComponent(ExitButton))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(computerCard0, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -355,7 +353,10 @@ public class Gui extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     /**
-     * @param 
+     * This method is called when the user draws a card. It changes the current
+     * card icon and calls another method to decide who gets both cards
+     *
+     * @param ActionEvent
      */
     private void DrawButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DrawButtonActionPerformed
         if (iteration == true) {
@@ -363,7 +364,7 @@ public class Gui extends javax.swing.JFrame {
         }
         playerCard0.setIcon(setPlayerCard()); //sets the player card image
         computerCard0.setIcon(setComputerCard());//sets the computer card image
-                counter++;//game adds 1 to the number of flips 
+        counter++;//game adds 1 to the number of flips 
         int holder = Gameplay.compareValues(); //holder variable determines what message will be outputted (0 means player wins draw, 1 means computer wins draw, -1 means war)
         if (disableDraw == 1) {//if there is war,
             addToHolderArray();//the player's cards and computer's cards are added to an array temporarily
@@ -381,11 +382,15 @@ public class Gui extends javax.swing.JFrame {
         } else if (holder == -1) {
             textArea.setText("War!!");
         }
-        updateScores();//update the scores of the game
+        updateCount();//update the scores of the game
     }//GEN-LAST:event_DrawButtonActionPerformed
 
     /**
-     * @param args the command line arguments
+     * This method is called when the user flips the first card. It changes the
+     * current card icon (removing 1 card from each party's hand) and adds 1 to
+     * the counter.
+     *
+     * @param ActionEvent
      */
     private void Flip1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Flip1ActionPerformed
         playerCard1.setIcon(setPlayerCard());//sets the player card image
@@ -395,13 +400,15 @@ public class Gui extends javax.swing.JFrame {
         removeFromMainArray();//they player's cards and computer's cards are removed from the arrays 
         Flip1.setEnabled(false);
         Flip2.setEnabled(true);
-        updateScores();//update the scores of the game
+        updateCount();//update the scores of the game
         check0cards(0);//checks that both players have enough cards (they do not have 0) to continue (else, forfeiture)
         check1cards();//checks that both players have enough cards (they do not have 1) to continue (else, forfeiture)
     }//GEN-LAST:event_Flip1ActionPerformed
 
     /**
-     * @param args the command line arguments
+     * This method is called when the user presses the Give Up button
+     *
+     * @param ActionEvent
      */
     private void GiveUpButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GiveUpButtonActionPerformed
         DrawButton.setEnabled(false);
@@ -409,25 +416,34 @@ public class Gui extends javax.swing.JFrame {
         Flip2.setEnabled(false);
         Flip3.setEnabled(false);
         Flip4.setEnabled(false);
-        textArea.setText("you have forfeited the game");
+        textArea.setText("You have forfeited the game");
     }//GEN-LAST:event_GiveUpButtonActionPerformed
 
     /**
-     * @param args the command line arguments
+     * This method is called when the user presses the Instructions button
+     *
+     * @param ActionEvent
      */
     private void InstructionsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InstructionsButtonActionPerformed
         Instructions.displayInformation();
     }//GEN-LAST:event_InstructionsButtonActionPerformed
 
     /**
-     * @param args the command line arguments
+     * This method is called when the user presses the Exit Application button ,
+     * ending the game
+     *
+     * @param ActionEvent
      */
     private void ExitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ExitButtonActionPerformed
         System.exit(0);
     }//GEN-LAST:event_ExitButtonActionPerformed
 
     /**
-     * @param args the command line arguments
+     * This method is called when the user flips the second card. It changes the
+     * current card icon (removing 1 card from each party's hand) and adds 1 to
+     * the counter.
+     *
+     * @param ActionEvent
      */
     private void Flip2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Flip2ActionPerformed
         playerCard2.setIcon(setPlayerCard());//sets the player card image
@@ -437,38 +453,49 @@ public class Gui extends javax.swing.JFrame {
         counter++;//game adds 1 to the number of flips 
         Flip2.setEnabled(false);
         Flip3.setEnabled(true);
-        updateScores();//update the scores of the game
+        updateCount();//update the scores of the game
         check0cards(0);//checks that both players have enough cards (they do not have 0) to continue (else, forfeiture)
         check1cards();//checks that both players have enough cards (they do not have 1) to continue (else, forfeiture)
     }//GEN-LAST:event_Flip2ActionPerformed
 
     /**
-     * @param args the command line arguments
+     * This method is called when the user flips the third card. It changes the
+     * current card icon (removing 1 card from each party's hand) and adds 1 to
+     * the counter.
+     *
+     * @param ActionEvent
      */
     private void Flip3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Flip3ActionPerformed
         playerCard3.setIcon(setPlayerCard());//sets the player card image
         computerCard3.setIcon(setComputerCard());//sets the computer card image
         addToHolderArray();//the player's cards and computer's cards are added to an array temporarily
         removeFromMainArray();//they player's cards and computer's cards are removed from the arrays 
+        counter++;//game adds 1 to the number of flips 
         Flip3.setEnabled(false);
         Flip4.setEnabled(true);
-        updateScores();//update the scores of the game
+        updateCount();//update the scores of the game
         check0cards(0);//checks that both players have enough cards (they do not have 0) to continue (else, forfeiture)
         check1cards();//checks that both players have enough cards (they do not have 1) to continue (else, forfeiture)
-        counter++;//game adds 1 to the number of flips 
+
     }//GEN-LAST:event_Flip3ActionPerformed
 
     /**
-     * @param args the command line arguments
+     * This method is called when the user flips the last card. It changes the
+     * current card icon (removing 1 card from each party's hand) and adds 1 to
+     * the counter. It also calls another method that decides who gets all the
+     * cards in the war.
+     *
+     * @param ActionEvent
      */
     private void Flip4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Flip4ActionPerformed
         playerCard4.setIcon(setPlayerCard());//sets the player card image
         computerCard4.setIcon(setComputerCard());//sets the computer card image
+        Flip4.setEnabled(false);
         addToHolderArray();//the player's cards and computer's cards are added to an array temporarily
         Gameplay.war();//does the War method
         removeFromMainArray();//they player's cards and computer's cards are removed from the arrays 
-        Flip4.setEnabled(false);
-        updateScores();//update the scores of the game
+
+        updateCount();//update the scores of the game
         DrawButton.setEnabled(true);
         disableDraw = 0;//resets it so that there is no more war
         counter++;//game adds 1 to the number of flips 
@@ -478,7 +505,8 @@ public class Gui extends javax.swing.JFrame {
     }//GEN-LAST:event_Flip4ActionPerformed
 
     /**
-     * @param args the command line arguments
+     * This method is called when the user Saves their score
+     * @param ActionEvent
      */
     private void SaveScoreButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SaveScoreButtonActionPerformed
         Save.displayLeaderboard();//displays leaderboard dialog
@@ -523,14 +551,17 @@ public class Gui extends javax.swing.JFrame {
                 } catch (IOException ex) {
                     Logger.getLogger(Gui.class.getName()).log(Level.SEVERE, null, ex);
                 }
+
                 GameSetup.initialize();
                 GameSetup.shuffleDeck();
+
             }
         });
     }
 
     /**
-     * @param args the command line arguments
+This method sets the player card image
+* @return the imageicon of the card
      */
     private ImageIcon setPlayerCard() {
         String playerFilePath = "src/war4/res/" + playerRanksAL.get(playerRanksAL.size() - 1) + playerSuitsAL.get(playerSuitsAL.size() - 1) + ".png";
@@ -539,7 +570,8 @@ public class Gui extends javax.swing.JFrame {
     }
 
     /**
-     * @param args the command line arguments
+This method sets the computer card image
+* @return the imageicon of the card
      */
     private ImageIcon setComputerCard() {
         String computerFilePath = "src/war4/res/" + computerRanksAL.get(computerRanksAL.size() - 1) + computerSuitsAL.get(computerSuitsAL.size() - 1) + ".png";
@@ -548,7 +580,7 @@ public class Gui extends javax.swing.JFrame {
     }
 
     /**
-     * @param args the command line arguments
+This method decides who gets the cards in the war (in a tie)
      */
     private void distribution() {
         distribution = Gameplay.playerComp();
@@ -561,7 +593,7 @@ public class Gui extends javax.swing.JFrame {
     }
 
     /**
-     * @param args the command line arguments
+This method adds multiple cards to a large array that holds the played cards (the cards on the field)
      */
     private void addToHolderArray() {
         RanksWarHolder.add(computerRanksAL.get(computerRanksAL.size() - 1));
@@ -571,7 +603,7 @@ public class Gui extends javax.swing.JFrame {
     }
 
     /**
-     * @param args the command line arguments
+This method adds multiple cards to a large array that holds the played cards (the cards on the field)
      */
     private void removeFromMainArray() {
         playerRanksAL.remove(playerRanksAL.size() - 1);
@@ -581,16 +613,15 @@ public class Gui extends javax.swing.JFrame {
     }
 
     /**
-     * @param args the command line arguments
+     * This method updates the size of the arrays
      */
-    private void updateScores() {
+    private void updateCount() {
         playerNumberCards.setText(Integer.toString(playerRanksAL.size()));
         computerNumberCards.setText(Integer.toString(computerRanksAL.size()));
-
     }
 
     /**
-     * @param args the command line arguments
+     * this method changes all the card images to the backings
      */
     private void setBacking() {
         String cardBacking = "src/war4/backing.png";
@@ -608,7 +639,7 @@ public class Gui extends javax.swing.JFrame {
     }
 
     /**
-     * @param args the command line arguments
+     * This method disables all the crucial game buttons
      */
     private void disableGameButtons() {
         DrawButton.setEnabled(false);
@@ -619,7 +650,8 @@ public class Gui extends javax.swing.JFrame {
     }
 
     /**
-     * @param args the command line arguments
+     * This method checks if the player or computer has 0 cards
+     * if they do, they forfeit to their opponent.
      */
     private void check0cards(int holder) {
         if (playerRanksAL.size() == 0) {//if the computer has no cards left, player wins (impossible for computer to win war)
@@ -640,7 +672,8 @@ public class Gui extends javax.swing.JFrame {
     }
 
     /**
-     * @param args the command line arguments
+     * This method checks if the player or computer has 1 card
+     * if they do, they forfeit to their opponent.
      */
     private void check1cards() {
         if (playerRanksAL.size() == 1) {//if the player has 1 last card, computer wins (impossible for player to win war)
